@@ -14,5 +14,5 @@ module.exports = {
       selector: ".debug-screens",
     },
   },
-  plugins: [require("tailwindcss-debug-screens", "flowbite/plugin")],
+  plugins: [require("tailwindcss-debug-screens"), require("flowbite/plugin")],
 };
