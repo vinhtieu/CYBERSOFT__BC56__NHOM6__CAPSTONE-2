@@ -7,6 +7,9 @@ module.exports = {
       screens: {
         "4xl": "1753px",
       },
+      gridTemplateRows: {
+        "[auto,auto,1fr]": "auto auto 1fr",
+      },
     },
     debugScreens: {
       position: ["bottom", "left"],
