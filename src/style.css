@@ -5,3 +5,12 @@
 .show {
   display: block;
 }
+
+.col-auto {
+  grid-column: auto;
+  max-width: min-content;
+}
+
+body {
+  height: 100vh;
+}
