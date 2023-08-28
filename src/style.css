@@ -6,6 +6,11 @@
   display: block;
 }
 
+.active {
+  background-color: rgb(243 244 246);
+  color: rgb(17 24 39);
+}
+
 .col-auto {
   grid-column: auto;
   max-width: min-content;
