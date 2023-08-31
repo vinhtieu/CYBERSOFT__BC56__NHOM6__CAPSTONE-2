@@ -5,25 +5,45 @@ import Form from "./form.js";
 import Table from "./table.js";
 import Sidebar from "./sidebar.js";
 const PHONES_API = "https://64da260ee947d30a260ad89a.mockapi.io/Phones";
+let searchKeys = [];
 
 document.addEventListener("DOMContentLoaded", start);
 
 constant.searchBar.addEventListener("input", (e) => {
   let searchKey = e.target.value;
-  let newList = constant.productList.filter((product) => {
+  let list = constant.productList.filter((product) => {
     for (const key in product) {
       if (Object.hasOwnProperty.call(product, key)) {
         let value = product[key];
-        let result = value.toString().toLowerCase().replace(" ", "-");
-        searchKey = searchKey.toLowerCase().replace(" ", "-");
-        if (result.includes(searchKey)) {
+        value = value.toString().toLowerCase().replace(" ", "-");
+        searchKey = searchKey.toString().toLowerCase().replace(" ", "-");
+        if (value.includes(searchKey)) {
           return true;
         }
       }
     }
     return false;
   });
-  Table.render(newList);
+  Table.render(list);
+});
+
+constant.filterOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    if (option.checked) {
+      if (!searchKeys.includes(option.id)) searchKeys.push(option.id);
+      filterItem();
+    } else {
+      if (searchKeys.includes(option.id)) {
+        let index = searchKeys.indexOf(option.id);
+        searchKeys.splice(index, 1);
+      }
+      if (searchKeys.length > 0) {
+        filterItem();
+      } else {
+        Table.render(constant.productList);
+      }
+    }
+  });
 });
 
 constant.sidebar_table_btn.addEventListener("click", () => {
@@ -85,6 +105,27 @@ constant.addModalAddBtn.addEventListener("click", () => {
 constant.addModalOpenBtn.addEventListener("click", () => {
   Form.clearInputs();
 });
+
+function filterItem() {
+  let list = constant.productList.filter((product) => {
+    for (const productKey in product) {
+      if (Object.hasOwnProperty.call(product, productKey)) {
+        if (productKey !== "image") {
+          let value = product[productKey];
+          value = value.toString().toLowerCase().replace(" ", "-");
+          for (let searchKey of searchKeys) {
+            searchKey = searchKey.toString().toLowerCase().replace(" ", "-");
+            if (value.includes(searchKey)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
+  });
+  Table.render(list);
+}
 
 function editItem(id) {
   let url = `${PHONES_API}/${id}`;

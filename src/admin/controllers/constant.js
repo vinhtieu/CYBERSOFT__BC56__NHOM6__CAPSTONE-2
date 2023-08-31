@@ -7,6 +7,7 @@ class Constant {
 
       this.productList;
       this.searchBar = this.$("#simple-search");
+      this.filterOptions = this.$$("#filterOptions li input");
       //Sidebar
       this.sidebar_table_btn = this.$("#sidebar-table__btn");
       this.sidebar_product_btn = this.$("#sidebar-product__btn");
