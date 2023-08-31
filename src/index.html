@@ -83,6 +83,7 @@
               </svg>
             </button>
           </div>
+
           <div
             class="items-center justify-between hidden w-full ml-auto md:flex md:w-auto md:order-1"
             id="navbar-sticky">
@@ -113,6 +114,8 @@
                   placeholder="Search..." />
               </div>
             </div>
+
+            <!-- * Account and Shopping Cart * -->
             <ul
               class="flex flex-col items-center gap-2 p-4 mt-4 font-medium border border-gray-100 rounded-lg md:gap-6 md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
@@ -125,15 +128,14 @@
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <button
+                  id="cart-icon"
                   class="mb-2 md:mb-0 relative hover:bg-gray-100 md:hover:bg-transparent md:after:absolute md:after:origin-center md:after:-bottom-1 md:after:w-0 md:after:h-0.5 md:after:bg-black md:after:transition-all md:after:duration-500 md:after:ease-in-out md:hover:after:w-full flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-black rounded md:p-0 md:dark:text-white"
                   aria-current="page">
                   <i
                     class="text-xl after:content md:text-2xl fa-solid fa-cart-shopping">
                   </i>
-                  <span class="md:hidden">Shopping Cart</span>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -483,442 +485,310 @@
     <!-- ! Side bar - end !-->
 
     <!-- ! Main Section - begin !-->
-    <main class="p-6 pt-0 mt-[173px] 2xl:mt-20 2xl:ml-64">
+    <main id="content" class="p-6 pt-0 mt-[173px] 2xl:mt-20 2xl:ml-64">
       <!-- * Product Grid *-->
-      <div class="hidden" id="productGrid">
-        <div class="p-4 rounded-lg dark:border-gray-700">
+      <div
+        id="productGrid"
+        class="grid grid-cols-1 gap-6 p-4 mb-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <!-- * 1 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
           <div
-            class="grid grid-cols-1 gap-6 mb-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            <!-- * 1 *-->
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
             <div
-              class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded bg-gray-50 dark:bg-gray-800">
-              <div
-                class="w-full h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
-
-                <a class="flex items-center justify-center mb-4" href="#">
-                  <img
-                    class="p-8 rounded-t-lg"
-                    src="https://ss7.vzw.com/is/image/VerizonWireless/iphone-14-pro-deep-purple-fall22-a?hei=262&fmt=webp"
-                    alt="product image" />
-                </a>
-                <!-- *  *-->
-                <div class="px-5 pb-5">
-                  <!-- * Product Name *-->
-                  <a href="#">
-                    <h5
-                      class="text-2xl font-semibold tracking-tight text-gray-900 sm:text-xl dark:text-white">
-                      Apple - iPhone 14 Pro Max 128GB - Deep Purple
-                    </h5>
-                  </a>
-                  <!-- * Rating Stars *-->
-                  <div class="flex items-center mt-4 mb-6 sm:mt-3 sm:mb-5">
-                    <svg
-                      class="w-5 h-5 mr-1 text-yellow-300"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 22 20">
-                      <path
-                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg
-                      class="w-5 h-5 mr-1 text-yellow-300"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 22 20">
-                      <path
-                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg
-                      class="w-5 h-5 mr-1 text-yellow-300"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 22 20">
-                      <path
-                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg
-                      class="w-5 h-5 mr-1 text-yellow-300"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 22 20">
-                      <path
-                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg
-                      class="w-5 h-5 text-gray-200 dark:text-gray-600"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 22 20">
-                      <path
-                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <span
-                      class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"
-                      >5.0</span
-                    >
-                  </div>
-                  <!-- * Price & Button *-->
-                  <div class="flex items-center justify-between">
-                    <span
-                      class="text-2xl font-bold text-gray-900 sm:text-xl dark:text-white"
-                      >27.000.000đ</span
-                    >
-                  </div>
-                </div>
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
+                <div
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 1 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+          </div>
+        </div>
+        <!-- * 2 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 2 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+          </div>
+        </div>
+        <!-- * 3 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 3 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+          </div>
+        </div>
+        <!-- * 4 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- * Content *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 4 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+          </div>
+        </div>
+        <!-- * 5 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- * Content *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 5 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+          </div>
+        </div>
+        <!-- * 6 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 6 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+          </div>
+        </div>
+        <!-- * 7 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <!-- * 7 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
-                <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
-              </div>
+          </div>
+        </div>
+        <!-- * 8 *-->
+        <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
+          <div
+            class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
+            <!-- * Img *-->
+            <div
+              class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
             </div>
-            <!-- * 8 *-->
-            <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
-              <div
-                class="w-full h-full p-4 bg-white border border-gray-200 rounded-lg shadow animate-pulse dark:bg-gray-800 dark:border-gray-700">
-                <!-- * Img *-->
+            <!-- *  *-->
+            <div class="py-10">
+              <div role="status" class="max-w-sm animate-pulse">
                 <div
-                  class="box-content flex items-center justify-center w-full bg-gray-300 rounded h-80 dark:bg-gray-700">
-                  <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-600"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 18">
-                    <path
-                      d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                  </svg>
-                </div>
-                <!-- *  *-->
-                <div class="py-10">
-                  <div role="status" class="max-w-sm animate-pulse">
-                    <div
-                      class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-                    <div
-                      class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
+                  class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                <div
+                  class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- * Product Overview *-->
-      <div class="pt-6 bg-white" id="productOverview">
-        <!-- * Breadcrumb * -->
-        <nav aria-label="Breadcrumb">
-          <ol
-            role="list"
-            class="flex items-center space-x-2 text-base lg:max-w-7xl">
-            <li>
-              <div class="flex items-center">
-                <a href="#" class="mr-2 font-medium text-gray-900">Phones</a>
-                <svg
-                  width="16"
-                  height="20"
-                  viewBox="0 0 16 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  class="w-4 h-5 text-gray-300">
-                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                </svg>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center">
-                <a href="#" class="mr-2 font-medium text-gray-900">iphone</a>
-                <svg
-                  width="16"
-                  height="20"
-                  viewBox="0 0 16 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  class="w-4 h-5 text-gray-300">
-                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                </svg>
-              </div>
-            </li>
-
-            <li class="">
-              <a
-                href="#"
-                aria-current="page"
-                class="font-medium text-gray-500 hover:text-gray-600"
-                >iphone 14 Pro Max</a
-              >
-            </li>
-          </ol>
-        </nav>
-        <!-- * Product Overview *-->
+      <div class="hidden pt-6 bg-white" id="productOverview">
         <div class="grid grid-flow-row pt-6">
           <div class="grid grid-cols-3 gap-2">
             <!-- * Image *-->
@@ -1145,7 +1015,6 @@
           </div>
         </div>
         <!-- * Accordion *-->
-
         <div
           id="accordion-flush"
           data-accordion="collapse"
@@ -1339,6 +1208,233 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- * Loading Animation * -->
+      <div
+        id="loadingAnimation"
+        class="z-30 hidden w-full h-full"
+        role="status">
+        <svg
+          aria-hidden="true"
+          class="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          viewBox="0 0 100 101"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor" />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill" />
+        </svg>
+        <span class="sr-only">Loading...</span>
+      </div>
+      <!-- * Shopping Cart * -->
+      <div id="shoppingCart" class="relative w-full mx-auto bg-white max-w-7xl">
+        <div class="grid grid-cols-10">
+          <div class="px-4 py-6 col-span-full lg:col-span-6 sm:py-12 lg:py-24">
+            <div class="w-full max-w-lg mx-auto">
+              <h1
+                class="relative text-2xl font-medium text-gray-700 sm:text-3xl">
+                Secure Checkout
+                <span class="block w-10 h-1 mt-2 bg-indigo-600 sm:w-20" />
+              </h1>
+
+              <form action="" class="flex flex-col mt-10 space-y-4">
+                <div>
+                  <label for="email" class="text-xs font-semibold text-gray-500"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="myaddress@example.com"
+                    class="block w-full mt-1 text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
+                </div>
+                <div class="relative">
+                  <label
+                    for="card-number"
+                    class="text-xs font-semibold text-gray-500"
+                    >Card number</label
+                  >
+                  <input
+                    type="text"
+                    id="card-number"
+                    name="card-number"
+                    placeholder="1234-5678-XXXX-XXXX"
+                    class="block w-full pr-10 text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
+                  <img
+                    src="https://fancytailwind.com/static/visa-icon-5282a8660b2ad42cbdcf817d51129c0a.png"
+                    alt=""
+                    class="absolute bottom-3 right-3 max-h-4" />
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-gray-500">
+                    Expiration date
+                  </p>
+                  <div class="flex flex-wrap mr-6">
+                    <div class="my-1">
+                      <label for="month" class="sr-only"
+                        >Select expiration month</label
+                      >
+                      <select
+                        name="month"
+                        id="month"
+                        class="{`form-select"
+                        shadow-sm
+                        rounded
+                        border-gray-300
+                        bg-gray-50
+                        text-sm
+                        cursor-pointer
+                        focus:border-indigo-500
+                        focus:ring-1
+                        focus:ring-indigo-500`}>
+                        <option value="">Month</option>
+                      </select>
+                    </div>
+                    <div class="my-1 ml-3 mr-6">
+                      <label for="year" class="sr-only"
+                        >Select expiration year</label
+                      >
+                      <select
+                        name="year"
+                        id="year"
+                        class="{`form-select"
+                        shadow-sm
+                        rounded
+                        border-gray-300
+                        bg-gray-50
+                        text-sm
+                        cursor-pointer
+                        focus:border-indigo-500
+                        focus:ring-1
+                        focus:ring-indigo-500`}>
+                        <option value="">Year</option>
+                      </select>
+                    </div>
+                    <div class="relative my-1">
+                      <label for="security-code" class="sr-only"
+                        >Security code</label
+                      >
+                      <input
+                        type="text"
+                        id="security-code"
+                        name="security-code"
+                        placeholder="Security code"
+                        class="block text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input w-36 bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
+                      <button
+                        class="absolute inline-flex items-center justify-center text-gray-400 transform -translate-y-1/2 top-1/2 -right-6 hover:text-indigo-600">
+                        <InformationCircleIcon class="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="card-name" class="sr-only">Card name</label>
+                  <input
+                    type="text"
+                    id="card-name"
+                    name="card-name"
+                    placeholder="Name on the card"
+                    class="block w-full mt-1 text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
+                </div>
+              </form>
+
+              <p class="mt-10 text-sm font-semibold text-center text-gray-500">
+                By placing this order you agree to the {" "}
+                <a
+                  href="#link"
+                  class="text-indigo-400 underline hover:text-indigo-600 whitespace-nowrap"
+                  >Terms and Conditions</a
+                >
+              </p>
+
+              <button
+                type="submit"
+                class="mt-4 py-2.5 px-4 w-full inline-flex justify-center items-center rounded bg-indigo-600 text-base sm:text-lg text-white text-opacity-80 font-semibold tracking-wide hover:text-opacity-100">
+                <LockClosedIcon class="w-5 h-5 mr-3" />
+                Place Order
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="relative flex flex-col py-6 pl-8 pr-4 col-span-full lg:col-span-4 sm:py-12 lg:py-24">
+            <h2 class="sr-only">Order summary</h2>
+
+            <div>
+              <img
+                src="https://fancytailwind.com/static/library-fa7aea16a963a82df967b09479d3290f.jpg"
+                alt=""
+                class="absolute inset-0 w-full h-full" />
+              <div
+                class="absolute inset-0 w-full h-full opacity-75 bg-gradient-to-t from-indigo-800 to-indigo-400" />
+            </div>
+
+            <div class="relative">
+              <ul class="space-y-5">
+                {order.items.map(item => (
+                <li key="{item.id}" class="flex justify-between">
+                  <div class="inline-flex">
+                    <img src="{item.picture}" alt="" class="max-h-16" />
+                    <div class="ml-3">
+                      <p class="text-base font-semibold text-white">
+                        {item.name}
+                      </p>
+                      <p class="text-sm font-medium text-white text-opacity-80">
+                        {item.details}
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-sm font-semibold text-white">
+                    {`$${item.price.toFixed(2)}`}
+                  </p>
+                </li>
+                )) }
+              </ul>
+              <div class="my-5 w-full h-0.5 bg-white bg-opacity-30" />
+              <div class="space-y-2">
+                <p class="flex justify-between text-lg font-bold text-white">
+                  <span>Total price:</span>
+                  <span>{`$${order.total.toFixed(2)}`}</span>
+                </p>
+                <p class="flex justify-between text-sm font-medium text-white">
+                  <span>Vat: 20%</span>
+                  <span>{`$${order.vat.toFixed(2)}`}</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="relative mt-10 text-white">
+              <h3 class="mb-5 text-lg font-bold">Hotline</h3>
+              <p class="text-sm font-semibold">
+                +01 23 456 789 {" "}
+                <span class="font-light">(International)</span>
+              </p>
+              <p class="mt-1 text-sm font-semibold">
+                +9(876) 543 210 {" "}
+                <span class="font-light">(USA / Canada)</span>
+              </p>
+              <p class="mt-2 text-xs font-medium">
+                (24/7 English phone support for online payment related issues)
+              </p>
+            </div>
+
+            <div class="relative flex mt-10">
+              <BadgeCheckIcon class="w-10 h-10 mr-3 text-yellow-400" />
+              <p class="flex flex-col">
+                <span class="text-sm font-bold text-white"
+                  >Money Back Guarantee</span
+                >
+                <span class="text-xs font-medium text-white"
+                  >within 30 days of purchase</span
+                >
+              </p>
             </div>
           </div>
         </div>

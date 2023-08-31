@@ -3,7 +3,6 @@ import Form from "./form.js";
 
 class Server {
   static fetch = (url, callback) => {
-    Table.loading();
     axios
       .get(url)
       .then((res) => {
@@ -13,48 +12,53 @@ class Server {
         console.log(err);
       })
       .finally(() => {
+        Form.hideLoadingBtn();
+        Form.showAddBtn();
+        Form.showUpdateModalUpdateBtn();
+        Form.hideUpdateModalLoadingBtn();
+        Form.hideUpdateModalLoadingAnimation();
+        Form.showUpdateModalContent();
+        Form.hideAddModalLoadingBtn();
+        Form.showAddModalAddBtn();
+        Form.clearInputs("addModal");
+        Form.clearInputs();
         Table.stopLoading();
+        Table.showTable();
       });
   };
+
   static post = (url, content, callback) => {
-    Form.hideAddBtn();
-    Form.showLoadingBtn();
     axios
       .post(url, content)
       .then(() => {
-        try {
-          Form.hideAddBtn();
-          this.fetch(url, callback);
-        } catch (err) {
-          console.log(err);
-        }
+        this.fetch(url, callback);
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        Form.hideLoadingBtn();
-        Form.showAddBtn();
       });
   };
-  static patch = (url) => {};
 
-  static delete = (url) => {
-    Table.loading();
+  static put = (url, id, content, callback) => {
+    const api = `${url}/${id}`;
     axios
-      .delete(url)
+      .put(api, content)
       .then(() => {
-        try {
-          this.fetch(url);
-        } catch (err) {
-          console.log(err);
-        }
+        this.fetch(url, callback);
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+
+  static delete = (url, id, callback) => {
+    const api = url + "/" + id;
+    axios
+      .delete(api)
+      .then(() => {
+        this.fetch(url, callback);
       })
-      .finally(() => {
-        Table.stopLoading();
+      .catch((err) => {
+        console.log(err);
       });
   };
 }

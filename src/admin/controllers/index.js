@@ -1,143 +1,98 @@
-import constants from "./constants.js";
+import constant from "./constant.js";
 import Server from "./server.js";
 import Page from "./page.js";
-import Table from "./table.js";
 import Form from "./form.js";
+import Table from "./table.js";
 import Sidebar from "./sidebar.js";
-
-const PHONES_API = "https://64da260ee947d30a260ad89a.mockapi.io/Electronics";
+const PHONES_API = "https://64da260ee947d30a260ad89a.mockapi.io/Phones";
 
 document.addEventListener("DOMContentLoaded", start);
 
-constants.sidebar_table_btn.addEventListener("click", () => {
+constant.sidebar_table_btn.addEventListener("click", () => {
   Page.openProductTable();
   Page.closeProductCreationForm();
 });
-constants.sidebar_product_btn.addEventListener("click", () => {
+constant.sidebar_product_btn.addEventListener("click", () => {
   Page.closeProductTable();
   Page.openProductCreationForm();
-  // Form.showAddBtn();
+  Form.clearInputs();
 });
 
-constants.sidebarButtons.forEach((button) => {
+constant.sidebarButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    constants.sidebarButtons.forEach((button) => {
+    constant.sidebarButtons.forEach((button) => {
       Sidebar.removeActive(button);
     });
     Sidebar.addActive(button);
   });
 });
 
-constants.productImage.addEventListener("change", (e) => {
-  handleReadingImage(e, constants.imgPreview);
-  handlePreviewingImage(constants.imgPreview, constants.inputField);
-
-  e.target.value = "";
+constant.addModalOpenBtn.addEventListener("click", () => {
+  Form.clearInputs();
 });
 
-constants.productImageModal.addEventListener("change", (e) => {
-  handleReadingImage(e, constants.imgPreviewModal, "Modal");
-
-  handlePreviewingImage(
-    constants.imgPreviewModal,
-    constants.uploadImgFieldModal
-  );
-
-  e.target.value = "";
+constant.productImage.addEventListener("input", (e) => {
+  let url = e.target.value;
+  constant.imgPreview.src = url;
 });
 
-constants.imgPreview.addEventListener("click", (e) => {
-  handleDeletingImage(
-    e,
-    "closeImgPreviewBtn",
-    constants.imgPreview,
-    constants.uploadImgField
-  );
-});
-constants.imgPreviewModal.addEventListener("click", (e) => {
-  handleDeletingImage(
-    e,
-    "closeImgPreviewBtnModal",
-    constants.imgPreviewModal,
-    constants.uploadImgFieldModal
-  );
+constant.updateModalProductImage.addEventListener("input", (e) => {
+  let url = e.target.value;
+  constant.updateModalImgPreview.src = url;
 });
 
-constants.formAddBtn.addEventListener("click", (e) => {
-  const productData = {
-    image: constants.productImage.value,
-    sku: constants.productSKU.value,
-    name: constants.productName.value,
-    condition: constants.productCondition.value,
-    price: constants.productPrice.value,
-    salePrice: constants.productSalePrice.value,
-    category: constants.productCategory.value,
-    subcategory: constants.productSubcategory.value,
-    quantity: constants.productQuantity.value,
-    overview: constants.productOverview.value,
-    specifications: constants.productSpecifications.value,
-  };
+constant.addModalProductImage.addEventListener("input", (e) => {
+  let url = e.target.value;
+  constant.addModalImgPreview.src = url;
+});
 
+constant.addBtn.addEventListener("click", (e) => {
+  const productData = Form.getInputs();
+  Form.hideAddBtn();
+  Form.showLoadingBtn();
+  Server.post(PHONES_API, productData, (data) => {
+    try {
+      Table.render(data);
+      throw new Error("Table is able to render data");
+    } catch (err) {
+      console.error(`!!!${err}!!!`);
+    }
+  });
+});
+
+constant.addModalAddBtn.addEventListener("click", () => {
+  const productData = Form.getInputs("addModal");
+  Form.hideAddModalAddBtn();
+  Form.showAddModalLoadingBtn();
   Server.post(PHONES_API, productData, Table.render);
 });
 
-function handleReadingImage(e, imgPreview, type = "") {
-  const file = e.target.files[0];
+function editItem(id) {
+  let url = `${PHONES_API}/${id}`;
+  Form.hideUpdateModalContent();
+  Form.showUpdateModalLoadingAnimation();
+  Server.fetch(url, Form.setInputsUpdateModal);
 
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      renderImg(imgPreview, type, e.target.result);
-
-      // Clear the input field
-    };
-
-    reader.readAsDataURL(file);
-  }
+  constant.updateModalUpdateBtn.addEventListener("click", () => {
+    const productData = Form.getInputs("updateModal");
+    Form.hideUpdateModalUpdateBtn();
+    Form.showUpdateModalLoadingBtn();
+    Server.put(PHONES_API, id, productData, Table.render);
+  });
 }
 
-function handlePreviewingImage(imgPreview, inputField) {
-  show(imgPreview);
-  hide(inputField);
-}
-
-function handleDeletingImage(e, btnId, imgPreview, inputField) {
-  const closeBtn = e.target.closest(`#${btnId}`);
-
-  if (closeBtn) {
-    hide(imgPreview);
-    show(inputField);
-  }
-}
-
-function show(element) {
-  element.classList.add("flex");
-  element.classList.remove("hidden");
-}
-
-function hide(element) {
-  element.classList.add("hidden");
-  element.classList.remove("flex");
-}
-
-function renderImg(selector, type, src) {
-  const closeBtnId = `closeImgPreviewBtn${type}`;
-  const htmlString = `
-    <img
-        class="object-contain object-center max-w-full max-h-full align-middle mx-auto"
-        src="${src}"
-        alt="" />
-    <i class="text-gray-500 p-2 text-lg fa-solid fa-xmark absolute top-1 right-2 cursor-pointer peer z-20 hover:text-white transition-all duration-100 ease-in-out " id="${closeBtnId}"></i>
-    <div class="bg-black opacity-0 absolute top-0 left-0 w-full h-full z-10 peer-hover:opacity-30 transition-all duration-100 ease-in-out" id="imgOverlay"></div> `;
-  selector.innerHTML = htmlString;
-}
-
-function deleteItem(sku) {
-  let url = `${PHONES_API}/${sku}`;
-  Server.delete(url);
+function deleteItem(id) {
+  constant.confirmBtn.addEventListener("click", () => {
+    Table.hideTable();
+    Table.showLoading();
+    Server.delete(PHONES_API, id, Table.render);
+  });
 }
 
 function start() {
+  window.editItem = editItem;
   window.deleteItem = deleteItem;
+  Table.hideTable();
+  Table.showLoading();
   Server.fetch(PHONES_API, Table.render);
 }

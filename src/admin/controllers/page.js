@@ -1,21 +1,21 @@
-import constants from "./constants.js";
+import constant from "./constant.js";
 
 class Page {
   static openProductCreationForm = () => {
-    constants.productCreationForm.classList.add("flex");
-    constants.productCreationForm.classList.remove("hidden");
+    constant.productCreationForm.classList.add("flex");
+    constant.productCreationForm.classList.remove("hidden");
   };
   static closeProductCreationForm = () => {
-    constants.productCreationForm.classList.add("hidden");
-    constants.productCreationForm.classList.remove("flex");
+    constant.productCreationForm.classList.add("hidden");
+    constant.productCreationForm.classList.remove("flex");
   };
   static openProductTable = () => {
-    constants.productTable.classList.add("flex");
-    constants.productTable.classList.remove("hidden");
+    constant.productTable.classList.add("flex");
+    constant.productTable.classList.remove("hidden");
   };
   static closeProductTable = () => {
-    constants.productTable.classList.add("hidden");
-    constants.productTable.classList.remove("flex");
+    constant.productTable.classList.add("hidden");
+    constant.productTable.classList.remove("flex");
   };
 }
 
