@@ -181,6 +181,9 @@ class Form {
   };
 
   static clearInputs = () => {
+    //Search Bar
+    constant.searchBar.value = "";
+
     //Product Creation Form
     constant.imgPreview.src = "";
     constant.productImage.value = "";

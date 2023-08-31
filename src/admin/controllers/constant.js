@@ -5,6 +5,8 @@ class Constant {
       this.$ = (selector) => document.querySelector(selector);
       this.$$ = (selector) => document.querySelectorAll(selector);
 
+      this.productList;
+      this.searchBar = this.$("#simple-search");
       //Sidebar
       this.sidebar_table_btn = this.$("#sidebar-table__btn");
       this.sidebar_product_btn = this.$("#sidebar-product__btn");
@@ -78,7 +80,6 @@ class Constant {
       this.addModalLoadingBtn = this.$("#addModalLoadingBtn");
 
       // Alert Modal
-
       this.confirmBtn = this.$("#confirmBtn");
     }
     return Constant.instance;

@@ -8,10 +8,29 @@ const PHONES_API = "https://64da260ee947d30a260ad89a.mockapi.io/Phones";
 
 document.addEventListener("DOMContentLoaded", start);
 
+constant.searchBar.addEventListener("input", (e) => {
+  let searchKey = e.target.value;
+  let newList = constant.productList.filter((product) => {
+    for (const key in product) {
+      if (Object.hasOwnProperty.call(product, key)) {
+        let value = product[key];
+        let result = value.toString().toLowerCase().replace(" ", "-");
+        searchKey = searchKey.toLowerCase().replace(" ", "-");
+        if (result.includes(searchKey)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  });
+  Table.render(newList);
+});
+
 constant.sidebar_table_btn.addEventListener("click", () => {
   Page.openProductTable();
   Page.closeProductCreationForm();
 });
+
 constant.sidebar_product_btn.addEventListener("click", () => {
   Page.closeProductTable();
   Page.openProductCreationForm();
@@ -25,10 +44,6 @@ constant.sidebarButtons.forEach((button) => {
     });
     Sidebar.addActive(button);
   });
-});
-
-constant.addModalOpenBtn.addEventListener("click", () => {
-  Form.clearInputs();
 });
 
 constant.productImage.addEventListener("input", (e) => {
@@ -67,6 +82,10 @@ constant.addModalAddBtn.addEventListener("click", () => {
   Server.post(PHONES_API, productData, Table.render);
 });
 
+constant.addModalOpenBtn.addEventListener("click", () => {
+  Form.clearInputs();
+});
+
 function editItem(id) {
   let url = `${PHONES_API}/${id}`;
   Form.hideUpdateModalContent();
@@ -94,5 +113,7 @@ function start() {
   window.deleteItem = deleteItem;
   Table.hideTable();
   Table.showLoading();
-  Server.fetch(PHONES_API, Table.render);
+  Server.fetch(PHONES_API, (data) => {
+    Table.render(data);
+  });
 }

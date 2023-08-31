@@ -1,11 +1,13 @@
 import Table from "./table.js";
 import Form from "./form.js";
+import constant from "./constant.js";
 
 class Server {
   static fetch = (url, callback) => {
     axios
       .get(url)
       .then((res) => {
+        constant.productList = res.data;
         callback(res.data);
       })
       .catch((err) => {
