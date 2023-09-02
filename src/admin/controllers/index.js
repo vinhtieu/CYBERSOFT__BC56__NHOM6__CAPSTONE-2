@@ -15,8 +15,8 @@ constant.searchBar.addEventListener("input", (e) => {
     for (const key in product) {
       if (Object.hasOwnProperty.call(product, key)) {
         let value = product[key];
-        value = value.toString().toLowerCase().replace(" ", "-");
-        searchKey = searchKey.toString().toLowerCase().replace(" ", "-");
+        value = stringToSlug(value);
+        searchKey = stringToSlug(searchKey);
         if (value.includes(searchKey)) {
           return true;
         }
@@ -105,6 +105,10 @@ constant.addModalAddBtn.addEventListener("click", () => {
 constant.addModalOpenBtn.addEventListener("click", () => {
   Form.clearInputs();
 });
+
+function stringToSlug(value) {
+  return value.toString().toLowerCase().replace(" ", "-");
+}
 
 function filterItem() {
   let list = constant.productList.filter((product) => {

@@ -13,17 +13,19 @@
       referrerpolicy="no-referrer" />
 
     <!-- My Style -->
-    <link rel="stylesheet" href="../public/style.css" />
+    <link rel="stylesheet" href="../../../public/style.css" />
     <title>Document</title>
   </head>
-  <body class="debug-screens">
-    <!-- ! Navbar - begin !-->
-    <header>
-      <nav
-        class="fixed top-0 left-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-600">
+  <body class="debug-screens h-[100vh]">
+    <!-- * Navbar * -->
+    <header
+      class="w-[100vw] fixed top-0 z-20 bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-600">
+      <nav class="container mx-auto">
         <div
           class="flex flex-wrap items-center justify-center h-full max-w-screen-xl p-4 mx-auto">
-          <a href="https://flowbite.com/" class="flex items-center">
+          <a
+            onclick="showProductGrid()"
+            class="flex items-center cursor-pointer">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               class="h-8 mr-3"
@@ -135,6 +137,9 @@
                   <i
                     class="text-xl after:content md:text-2xl fa-solid fa-cart-shopping">
                   </i>
+                  <div
+                    id="productInCartNumber"
+                    class="hidden text-center vertical-middle transition-all duration-75 ease-in-out absolute top-[-8px] right-[-8px] w-5 h-5 text-sm text-white bg-red-500 rounded-full"></div>
                 </button>
               </li>
             </ul>
@@ -143,21 +148,20 @@
       </nav>
     </header>
 
-    <!-- ! Navbar - end !-->
+    <!-- * Sidebar * -->
 
-    <!-- ! Side Bar - begin !-->
     <button
-      data-drawer-target="default-sidebar"
-      data-drawer-toggle="default-sidebar"
+      data-drawer-target="sidebar"
+      data-drawer-toggle="sidebar"
       data-drawer-backdrop="false"
-      aria-controls="default-sidebar"
+      aria-controls="sidebar"
       type="button"
       class="2xl:hidden block absolute items-center w-12 h-12 p-2 text-sm text-gray-500 bg-gray-100 rounded-lg top-[106px] right-8 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
       <i class="text-lg fa-solid fa-filter"></i>
     </button>
 
     <aside
-      id="default-sidebar"
+      id="sidebar"
       class="fixed bottom-0 left-0 w-64 overflow-auto transition-transform -translate-x-full h-scrseen top-16 2xl:translate-x-0"
       aria-label="Sidebar">
       <div
@@ -171,8 +175,8 @@
               </h2>
               <button
                 type="button"
-                data-drawer-hide="default-sidebar"
-                aria-controls="default-sidebar"
+                data-drawer-hide="sidebar"
+                aria-controls="sidebar"
                 class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg 2xl:hidden hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
                 <svg
                   class="w-3 h-3"
@@ -482,14 +486,20 @@
         </ul>
       </div>
     </aside>
-    <!-- ! Side bar - end !-->
 
-    <!-- ! Main Section - begin !-->
-    <main id="content" class="p-6 pt-0 mt-[173px] 2xl:mt-20 2xl:ml-64">
-      <!-- * Product Grid *-->
+    <!-- * Breadcrumb * -->
+
+    <nav class="container absolute left-[99px] top-[71px] p-4 px-10 mx-auto">
+      <ol class="flex space-x-2 cursor-pointer" id="breadcrumb"></ol>
+    </nav>
+
+    <!-- * Product Grid * -->
+    <section
+      id="productGridSection"
+      class="mt-16 bg-gray-100 min-h-400px 2xl:ml-64">
       <div
         id="productGrid"
-        class="grid grid-cols-1 gap-6 p-4 mb-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        class="grid grid-cols-1 gap-6 p-4 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         <!-- * 1 *-->
         <div class="h-[32.625rem] min-[40.5rem]:h-[33.875rem] rounded">
           <div
@@ -787,12 +797,15 @@
           </div>
         </div>
       </div>
-      <!-- * Product Overview *-->
-      <div class="hidden pt-6 bg-white" id="productOverview">
+    </section>
+
+    <!-- * Product Overview * -->
+    <section class="hidden w-full mt-16" id="productOverviewSection">
+      <div id="productOverview" class="container px-10 pt-6 mx-auto">
         <div class="grid grid-flow-row pt-6">
-          <div class="grid grid-cols-3 gap-2">
-            <!-- * Image *-->
-            <div class="flex items-center justify-center col-span-2 bg-white">
+          <div class="grid grid-cols-1 gap-2">
+            <!-- * Image * -->
+            <div class="flex items-center justify-center col-span-1 bg-white">
               <figure class="max-h-[640px] max-w-[550px] sm:px-6 lg:px-8">
                 <img
                   src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6487/6487251_sd.jpg;maxHeight=640;maxWidth=550"
@@ -801,7 +814,7 @@
               </figure>
             </div>
 
-            <!-- * Product Detais *-->
+            <!-- * Product Detais * -->
             <div class="col-span-1">
               <!-- Product info -->
               <div
@@ -812,7 +825,7 @@
                     class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                     <h1
                       class="mb-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
-                      id="productTitle">
+                      id="productOverviewTitle">
                       Iphone 14 Pro Max
                     </h1>
                   </div>
@@ -821,7 +834,7 @@
                     <h2 class="sr-only">Product information</h2>
                     <p
                       class="text-3xl tracking-tight text-gray-900"
-                      id="productPrice">
+                      id="productOverviewPrice">
                       $192
                     </p>
 
@@ -900,9 +913,9 @@
                           <legend class="sr-only">Choose a color</legend>
                           <div class="flex items-center space-x-3">
                             <!--
-                   Active and Checked: "ring ring-offset-1"
-                   Not Active and Checked: "ring-2"
-                 -->
+                       Active and Checked: "ring ring-offset-1"
+                       Not Active and Checked: "ring-2"
+                     -->
                             <label
                               class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
                               <input
@@ -919,9 +932,9 @@
                                 class="w-8 h-8 bg-white border border-black rounded-full border-opacity-10"></span>
                             </label>
                             <!--
-                   Active and Checked: "ring ring-offset-1"
-                   Not Active and Checked: "ring-2"
-                 -->
+                       Active and Checked: "ring ring-offset-1"
+                       Not Active and Checked: "ring-2"
+                     -->
                             <label
                               class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
                               <input
@@ -938,9 +951,9 @@
                                 class="w-8 h-8 bg-gray-200 border border-black rounded-full border-opacity-10"></span>
                             </label>
                             <!--
-                   Active and Checked: "ring ring-offset-1"
-                   Not Active and Checked: "ring-2"
-                 -->
+                       Active and Checked: "ring ring-offset-1"
+                       Not Active and Checked: "ring-2"
+                     -->
                             <label
                               class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
                               <input
@@ -960,53 +973,98 @@
                         </fieldset>
                       </div>
 
-                      <!-- Sizes -->
+                      <!-- Storage -->
                       <div class="mt-10">
-                        <label
-                          for="countries"
-                          class="block mt-4 mb-4 text-sm font-medium text-gray-900 dark:text-white"
-                          >Select an option</label
-                        >
-                        <!-- <select
-                          id="countries"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          <option selected>Choose a country</option>
-                          <option value="US">United States</option>
-                          <option value="CA">Canada</option>
-                          <option value="FR">France</option>
-                          <option value="DE">Germany</option>
-                        </select> -->
-
-                        <div class="flex gap-2">
-                          <button
-                            class="p-2 text-base text-black border border-black rounded active:text-white active:bg-black">
-                            128GB
-                          </button>
-                          <button
-                            class="p-2 text-base text-black border border-black rounded active:text-white active:bg-black">
-                            256GB
-                          </button>
-                          <button
-                            class="p-2 text-base text-black border border-black rounded active:text-white active:bg-black">
-                            512GB
-                          </button>
-                          <button
-                            class="p-2 text-base text-black border border-black rounded active:text-white active:bg-black">
-                            1TB
-                          </button>
-                        </div>
+                        <h3
+                          class="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+                          How much do you expect to use each month?
+                        </h3>
+                        <ul class="grid w-full gap-6 md:grid-cols-2">
+                          <li>
+                            <input
+                              type="radio"
+                              id="hosting-small"
+                              name="hosting"
+                              value="hosting-small"
+                              class="hidden peer"
+                              required />
+                            <label
+                              for="hosting-small"
+                              class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                              <div class="block">
+                                <div class="w-full text-lg font-semibold">
+                                  0-50 MB
+                                </div>
+                                <div class="w-full">
+                                  Good for small websites
+                                </div>
+                              </div>
+                              <svg
+                                class="w-5 h-5 ml-3"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 14 10">
+                                <path
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+                              </svg>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              id="hosting-big"
+                              name="hosting"
+                              value="hosting-big"
+                              class="hidden peer" />
+                            <label
+                              for="hosting-big"
+                              class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                              <div class="block">
+                                <div class="w-full text-lg font-semibold">
+                                  500-1000 MB
+                                </div>
+                                <div class="w-full">
+                                  Good for large websites
+                                </div>
+                              </div>
+                              <svg
+                                class="w-5 h-5 ml-3"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 14 10">
+                                <path
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+                              </svg>
+                            </label>
+                          </li>
+                        </ul>
                       </div>
 
-                      <button
-                        type="submit"
-                        class="flex items-center justify-center w-full px-8 py-3 mt-10 text-base font-medium text-blue-700 transition-all duration-300 ease-in-out bg-blue-200 border-2 border-blue-700 rounded-md juststify-center hover:text-white hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                        Add to cart
-                      </button>
-                      <button
-                        type="submit"
-                        class="flex items-center justify-center w-full px-8 py-3 mt-5 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                        Buy now
-                      </button>
+                      <!-- Buttons -->
+                      <div class="flex items-center justify-center gap-5 mt-10">
+                        <button
+                          id="addToCartBtn"
+                          type="submit"
+                          class="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-blue-700 transition-all duration-300 ease-in-out bg-blue-200 border-2 border-blue-700 rounded-md juststify-center hover:text-white hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                          Add to cart
+                        </button>
+                        <button
+                          id="buyNowBtn"
+                          type="submit"
+                          class="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                          Buy now
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -1212,237 +1270,59 @@
           </div>
         </div>
       </div>
-      <!-- * Loading Animation * -->
-      <div
-        id="loadingAnimation"
-        class="z-30 hidden w-full h-full"
-        role="status">
-        <svg
-          aria-hidden="true"
-          class="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-          viewBox="0 0 100 101"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-            fill="currentColor" />
-          <path
-            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-            fill="currentFill" />
-        </svg>
-        <span class="sr-only">Loading...</span>
+    </section>
+    <!-- * Loading Animation * -->
+    <section
+      class="absolute top-0 left-0 hidden w-full h-full bg-white"
+      id="loadingAnimation">
+      <div class="container flex items-center justify-center h-full mx-auto">
+        <div role="status">
+          <svg
+            aria-hidden="true"
+            class="w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="currentColor" />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentFill" />
+          </svg>
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
-      <!-- * Shopping Cart * -->
-      <div
-        id="shoppingCart"
-        class="relative hidden w-full mx-auto bg-white max-w-7xl">
-        <div class="grid grid-cols-10">
-          <div class="px-4 py-6 col-span-full lg:col-span-6 sm:py-12 lg:py-24">
-            <div class="w-full max-w-lg mx-auto">
-              <h1
-                class="relative text-2xl font-medium text-gray-700 sm:text-3xl">
-                Secure Checkout
-                <span class="block w-10 h-1 mt-2 bg-indigo-600 sm:w-20" />
-              </h1>
-
-              <form action="" class="flex flex-col mt-10 space-y-4">
-                <div>
-                  <label for="email" class="text-xs font-semibold text-gray-500"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="myaddress@example.com"
-                    class="block w-full mt-1 text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
-                </div>
-                <div class="relative">
-                  <label
-                    for="card-number"
-                    class="text-xs font-semibold text-gray-500"
-                    >Card number</label
-                  >
-                  <input
-                    type="text"
-                    id="card-number"
-                    name="card-number"
-                    placeholder="1234-5678-XXXX-XXXX"
-                    class="block w-full pr-10 text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
-                  <img
-                    src="https://fancytailwind.com/static/visa-icon-5282a8660b2ad42cbdcf817d51129c0a.png"
-                    alt=""
-                    class="absolute bottom-3 right-3 max-h-4" />
-                </div>
-                <div>
-                  <p class="text-xs font-semibold text-gray-500">
-                    Expiration date
-                  </p>
-                  <div class="flex flex-wrap mr-6">
-                    <div class="my-1">
-                      <label for="month" class="sr-only"
-                        >Select expiration month</label
-                      >
-                      <select
-                        name="month"
-                        id="month"
-                        class="{`form-select"
-                        shadow-sm
-                        rounded
-                        border-gray-300
-                        bg-gray-50
-                        text-sm
-                        cursor-pointer
-                        focus:border-indigo-500
-                        focus:ring-1
-                        focus:ring-indigo-500`}>
-                        <option value="">Month</option>
-                      </select>
-                    </div>
-                    <div class="my-1 ml-3 mr-6">
-                      <label for="year" class="sr-only"
-                        >Select expiration year</label
-                      >
-                      <select
-                        name="year"
-                        id="year"
-                        class="{`form-select"
-                        shadow-sm
-                        rounded
-                        border-gray-300
-                        bg-gray-50
-                        text-sm
-                        cursor-pointer
-                        focus:border-indigo-500
-                        focus:ring-1
-                        focus:ring-indigo-500`}>
-                        <option value="">Year</option>
-                      </select>
-                    </div>
-                    <div class="relative my-1">
-                      <label for="security-code" class="sr-only"
-                        >Security code</label
-                      >
-                      <input
-                        type="text"
-                        id="security-code"
-                        name="security-code"
-                        placeholder="Security code"
-                        class="block text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input w-36 bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
-                      <button
-                        class="absolute inline-flex items-center justify-center text-gray-400 transform -translate-y-1/2 top-1/2 -right-6 hover:text-indigo-600">
-                        <InformationCircleIcon class="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <label for="card-name" class="sr-only">Card name</label>
-                  <input
-                    type="text"
-                    id="card-name"
-                    name="card-name"
-                    placeholder="Name on the card"
-                    class="block w-full mt-1 text-sm placeholder-gray-300 border-gray-300 rounded shadow-sm form-input bg-gray-50 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
-                </div>
-              </form>
-
-              <p class="mt-10 text-sm font-semibold text-center text-gray-500">
-                By placing this order you agree to the {" "}
-                <a
-                  href="#link"
-                  class="text-indigo-400 underline hover:text-indigo-600 whitespace-nowrap"
-                  >Terms and Conditions</a
-                >
-              </p>
-
-              <button
-                type="submit"
-                class="mt-4 py-2.5 px-4 w-full inline-flex justify-center items-center rounded bg-indigo-600 text-base sm:text-lg text-white text-opacity-80 font-semibold tracking-wide hover:text-opacity-100">
-                <LockClosedIcon class="w-5 h-5 mr-3" />
-                Place Order
-              </button>
+    </section>
+    <!-- * Checkout * -->
+    <section
+      class="hidden w-full bg-gray-100 mt-14"
+      id="productCheckoutSection">
+      <div class="container mx-auto" id="productCheckout">
+        <div class="h-screen pt-20">
+          <div class="hidden" id="shoppingCart">
+            <h1
+              class="mb-10 text-2xl font-bold text-left"
+              id="shoppingCartTitle">
+              Your Cart
+            </h1>
+            <div class="relative grid-cols-3 px-6 md:grid md:space-x-6 xl:px-0">
+              <div
+                class="w-full col-span-2 rounded-lg"
+                id="shoppingCartProducts"></div>
+              <!-- Sub total -->
+              <div class="sticky top-0 col-span-1" id="checkoutForm"></div>
             </div>
           </div>
-
           <div
-            class="relative flex flex-col py-6 pl-8 pr-4 col-span-full lg:col-span-4 sm:py-12 lg:py-24">
-            <h2 class="sr-only">Order summary</h2>
-
-            <div>
-              <img
-                src="https://fancytailwind.com/static/library-fa7aea16a963a82df967b09479d3290f.jpg"
-                alt=""
-                class="absolute inset-0 w-full h-full" />
-              <div
-                class="absolute inset-0 w-full h-full opacity-75 bg-gradient-to-t from-indigo-800 to-indigo-400" />
-            </div>
-
-            <div class="relative">
-              <ul class="space-y-5">
-                {order.items.map(item => (
-                <li key="{item.id}" class="flex justify-between">
-                  <div class="inline-flex">
-                    <img src="{item.picture}" alt="" class="max-h-16" />
-                    <div class="ml-3">
-                      <p class="text-base font-semibold text-white">
-                        {item.name}
-                      </p>
-                      <p class="text-sm font-medium text-white text-opacity-80">
-                        {item.details}
-                      </p>
-                    </div>
-                  </div>
-                  <p class="text-sm font-semibold text-white">
-                    {`$${item.price.toFixed(2)}`}
-                  </p>
-                </li>
-                )) }
-              </ul>
-              <div class="my-5 w-full h-0.5 bg-white bg-opacity-30" />
-              <div class="space-y-2">
-                <p class="flex justify-between text-lg font-bold text-white">
-                  <span>Total price:</span>
-                  <span>{`$${order.total.toFixed(2)}`}</span>
-                </p>
-                <p class="flex justify-between text-sm font-medium text-white">
-                  <span>Vat: 20%</span>
-                  <span>{`$${order.vat.toFixed(2)}`}</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="relative mt-10 text-white">
-              <h3 class="mb-5 text-lg font-bold">Hotline</h3>
-              <p class="text-sm font-semibold">
-                +01 23 456 789 {" "}
-                <span class="font-light">(International)</span>
-              </p>
-              <p class="mt-1 text-sm font-semibold">
-                +9(876) 543 210 {" "}
-                <span class="font-light">(USA / Canada)</span>
-              </p>
-              <p class="mt-2 text-xs font-medium">
-                (24/7 English phone support for online payment related issues)
-              </p>
-            </div>
-
-            <div class="relative flex mt-10">
-              <BadgeCheckIcon class="w-10 h-10 mr-3 text-yellow-400" />
-              <p class="flex flex-col">
-                <span class="text-sm font-bold text-white"
-                  >Money Back Guarantee</span
-                >
-                <span class="text-xs font-medium text-white"
-                  >within 30 days of purchase</span
-                >
-              </p>
-            </div>
+            class="flex flex-col items-center justify-center w-full h-full"
+            id="emptyCart">
+            <i class="mb-4 text-5xl fa-solid fa-bag-shopping"></i>
+            <span class="text-xl">Your cart is empty</span>
           </div>
         </div>
       </div>
-    </main>
-    <!-- ! Main Section - end !-->
+    </section>
 
     <!-- Jquery -->
     <script
@@ -1466,9 +1346,9 @@
       referrerpolicy="no-referrer"></script>
 
     <!-- Flowbite -->
-    <script src="../public/lib/flowbite/flowbite.min.js"></script>
+    <script src="../../../public/lib/flowbite/flowbite.min.js"></script>
 
     <!-- My Js -->
-    <script type="module" src="../../assets/js/index.js"></script>
+    <script type="module" src="../controllers/index.js"></script>
   </body>
 </html>
