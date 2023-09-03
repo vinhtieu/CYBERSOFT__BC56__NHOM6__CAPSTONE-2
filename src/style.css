@@ -16,6 +16,41 @@
   max-width: min-content;
 }
 
-body {
-  height: 100vh;
+.custom-grid {
+  display: grid;
+  grid-template-columns: 16rem;
+  grid-template-rows: 4.375rem;
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "sidebar main main";
+}
+
+.grid-header {
+  grid-area: header;
+}
+.grid-sidebar {
+  grid-area: sidebar;
+}
+.grid-main {
+  grid-area: main;
+}
+
+@media screen and (max-width: 1536px) {
+  .custom-grid {
+    display: grid;
+    grid-template-columns: 16rem;
+    grid-template-rows: 4.375rem;
+    grid-template-areas:
+      "header header header"
+      "main main main"
+      "main main main";
+  }
+}
+
+#productCheckoutSection,
+#productOverviewSection,
+#productGridSection,
+#loadingAnimation {
+  min-height: calc(100vh - 70px);
 }
