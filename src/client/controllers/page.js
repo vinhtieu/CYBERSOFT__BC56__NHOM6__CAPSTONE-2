@@ -79,7 +79,7 @@ class Page {
     let html = array.map(
       (product) =>
         `
-          <div class="min-h-[450px] px-3 py-4 rounded bg-white " onclick="showProductOverview(${product.id})">
+          <div class="min-h-[450px] px-3 py-4 rounded bg-white " onclick="handleShowingProductOverview(${product.id})">
                 <!-- * Img *-->
                   <a class="h-[55%] flex items-center justify-center mb-12 sm:mb-10 md:mb-6" href="#">
                       <img class="p-2 rounded-t-lg object-contain object-center w-full h-full" src="${product.image}" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'" alt="product image" />
@@ -245,8 +245,8 @@ class Page {
           return `
          <li>
            <a
-             onclick = "showProductOverview(${item.id})"
-             class="before:content-['>'] before:mr-2 text-purple-700"
+             onclick = "handleShowingProductOverview(${item.id})"
+             class="before:content-['>'] before:mr-2 before:text-gray-600 text-purple-700"
              >${item.name}</a>
          </li>
          `;
@@ -254,7 +254,7 @@ class Page {
           return `
           <li>
             <a
-              class="before:content-['>'] before:mr-2 text-purple-700"
+              class="before:content-['>'] before:mr-2 before:text-gray-600 text-purple-700"
               >${item}</a>
           </li>
           `;
@@ -264,8 +264,8 @@ class Page {
           return `
          <li>
            <a
-             onclick = "showProductOverview(${item.id})"
-             class="before:content-['>'] before:mr-2 text-gray-600 hover:text-purple-700"
+             onclick = "handleShowingProductOverview(${item.id})"
+             class="before:content-['>'] before:mr-2 before:text-gray-600 text-gray-600 hover:text-purple-700"
              >${item.name}</a>
          </li>
          `;
@@ -273,7 +273,7 @@ class Page {
           return `
           <li>
             <a
-              class="before:content-['>'] before:mr-2 text-gray-600 hover:text-purple-700"
+              class="before:content-['>'] before:mr-2 before:text-gray-600 text-gray-600 hover:text-purple-700"
               >${item}</a>
           </li>
           `;
@@ -327,7 +327,7 @@ class Page {
     let firstItem = `
     <li>
       <a
-        onclick="showProductGrid()"
+        onclick="handleShowingProductGrid()"
         class=" text-gray-600 hover:text-purple-700"
         >Home</a
       >

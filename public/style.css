@@ -2823,6 +2823,12 @@ input:checked + .toggle-bg {
   margin-right: 0.5rem;
 }
 
+.before\:text-gray-600::before {
+  content: var(--tw-content);
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .before\:content-\[\'\>\'\]::before {
   --tw-content: '>';
   content: var(--tw-content);

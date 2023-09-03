@@ -10,6 +10,7 @@ class Constant {
       this.breadcrumbList = [];
       this.checkedItems = {};
       this.checkedBrands = [];
+      this.checkedConditions = [];
       this.loadingAnimation = this.$("#loadingAnimation");
 
       //Header

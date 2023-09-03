@@ -8,21 +8,15 @@ document.addEventListener("DOMContentLoaded", start);
 
 constant.filterBrand.addEventListener("click", (e) => {
   if (e.target.nodeName === "LABLE" || e.target.nodeName === "INPUT") {
-    const key = "brand";
-    const value = toString(e.target.value);
-    const isExisted = constant.checkedBrands.includes(value);
-    if (e.target.checked) {
-      if (!isExisted) constant.checkedBrands.push(value);
-    } else {
-      if (isExisted) {
-        const index = constant.checkedBrands.indexOf(value);
-        constant.checkedBrands.splice(index, 1);
-      }
-    }
+    handleCheckboxes(e, "brand", constant.checkedBrands);
+    handleShowingFilteredProductGrid();
+  }
+});
 
-    handleAddingKeysToObj(key);
-
-    handleShowingProductGrid();
+constant.filterCondition.addEventListener("click", (e) => {
+  if (e.target.nodeName === "LABLE" || e.target.nodeName === "INPUT") {
+    handleCheckboxes(e, "condition", constant.checkedConditions);
+    handleShowingFilteredProductGrid();
   }
 });
 
@@ -36,6 +30,24 @@ constant.cartIcon.addEventListener("click", () => {
   handleShowingProductCheckOut();
   handleShowingBreadCrumb("Checkout");
 });
+
+function handleCheckboxes(e, key, element) {
+  const checkedKey = key;
+  const value = toString(e.target.value);
+  const isExisted = element.includes(value);
+  if (e.target.checked) {
+    if (!isExisted) element.push(value);
+    handleAddingKeysToObj(checkedKey, element);
+  } else {
+    if (isExisted) {
+      const index = element.indexOf(value);
+      element.splice(index, 1);
+      if (element.length === 0) {
+        delete constant.checkedItems[checkedKey];
+      }
+    }
+  }
+}
 
 function handleShowingBreadCrumb(item) {
   const isDuplicated = checkBreadcrumbList(item);
@@ -55,12 +67,7 @@ function handleShowingBreadCrumb(item) {
   Page.show(constant.breadcrumb);
 }
 
-function handleShowingProductGrid() {
-  fetch(PHONES_API);
-  Page.hide(constant.productCheckoutSection);
-  Page.hide(constant.productOverviewSection);
-  Page.hide(constant.breadcrumb);
-
+function handleShowingFilteredProductGrid() {
   const isEmpty = inspectObject(constant.checkedItems);
   if (isEmpty) {
     Page.renderProductGrid(constant.productList);
@@ -68,6 +75,13 @@ function handleShowingProductGrid() {
     const product = filter(constant.checkedItems);
     Page.renderProductGrid(product);
   }
+}
+
+function handleShowingProductGrid() {
+  fetch(PHONES_API);
+  Page.hide(constant.productCheckoutSection);
+  Page.hide(constant.productOverviewSection);
+  Page.hide(constant.breadcrumb);
 }
 
 function handleShowingProductOverview(id) {
@@ -113,11 +127,11 @@ function handleHidingSuccessModal() {
   constant.successModal.classList.add("invisible");
 }
 
-function handleAddingKeysToObj(key) {
+function handleAddingKeysToObj(key, value) {
   if (constant.checkedItems.hasOwnProperty(key)) {
-    constant.checkedItems[key] = constant.checkedBrands;
+    constant.checkedItems[key] = value;
   } else {
-    constant.checkedItems[key] = constant.checkedBrands;
+    constant.checkedItems[key] = value;
   }
 }
 
@@ -225,9 +239,14 @@ function addProduct(productId) {
 }
 
 function filter(checkedItems) {
-  // const length = Object.keys(checkedItems).length;
-  // let fullfilConditions = 0;
-  const product = constant.productList.filter((product) => {
+  const length = Object.keys(checkedItems).length;
+  let fullfilConditions;
+  let currProduct;
+  let chosenProducts = [];
+
+  constant.productList.forEach((product) => {
+    fullfilConditions = 0;
+    currProduct = product;
     for (const key in product) {
       if (product.hasOwnProperty(key) && checkedItems.hasOwnProperty(key)) {
         for (let element of checkedItems[key]) {
@@ -235,16 +254,15 @@ function filter(checkedItems) {
           value = toString(value);
           element = toString(element);
           if (value === element) {
-            return true;
+            fullfilConditions++;
           }
         }
       }
     }
-    // if (fullfilConditions === length) return true;
-    return false;
+    if (fullfilConditions === length) chosenProducts.push(currProduct);
   });
 
-  return product;
+  return chosenProducts;
 }
 
 function inspectObject(obj) {
@@ -293,6 +311,7 @@ function fetch(url) {
       constant.productList = res.data;
       Page.renderProductGrid(constant.productList);
       Sidebar.renderFilterBrandOptions(constant.productList);
+      Sidebar.renderFilterConditionOptions(constant.productList);
     })
     .catch((err) => {
       console.log(err);
