@@ -1,6 +1,7 @@
 import constant from "../controllers/constant.js";
 import Page from "../controllers/page.js";
 import Sidebar from "../controllers/sidebar.js";
+import Util from "../controllers/util.js";
 
 const PHONES_API = "https://64da260ee947d30a260ad89a.mockapi.io/Phones";
 
@@ -16,6 +17,24 @@ constant.filterBrand.addEventListener("click", (e) => {
 constant.filterCondition.addEventListener("click", (e) => {
   if (e.target.nodeName === "LABLE" || e.target.nodeName === "INPUT") {
     handleCheckboxes(e, "condition", constant.checkedConditions);
+    handleShowingFilteredProductGrid();
+  }
+});
+constant.filterChip.addEventListener("click", (e) => {
+  if (e.target.nodeName === "LABLE" || e.target.nodeName === "INPUT") {
+    handleCheckboxes(e, "chip", constant.checkedChips);
+    handleShowingFilteredProductGrid();
+  }
+});
+constant.filterRam.addEventListener("click", (e) => {
+  if (e.target.nodeName === "LABLE" || e.target.nodeName === "INPUT") {
+    handleCheckboxes(e, "ram", constant.checkedRams);
+    handleShowingFilteredProductGrid();
+  }
+});
+constant.filterStorage.addEventListener("click", (e) => {
+  if (e.target.nodeName === "LABLE" || e.target.nodeName === "INPUT") {
+    handleCheckboxes(e, "storage", constant.checkedStorages);
     handleShowingFilteredProductGrid();
   }
 });
@@ -68,7 +87,7 @@ function handleShowingBreadCrumb(item) {
 }
 
 function handleShowingFilteredProductGrid() {
-  const isEmpty = inspectObject(constant.checkedItems);
+  const isEmpty = Util.inspectObject(constant.checkedItems);
   if (isEmpty) {
     Page.renderProductGrid(constant.productList);
   } else {
@@ -196,7 +215,7 @@ function getProductByKey(searchKey) {
 }
 
 function toString(element) {
-  return element.toString().toLowerCase().replace(" ", "-");
+  return element.toString().toLowerCase().replace(/ /g, "-");
 }
 
 function checkProductInCart() {
@@ -265,20 +284,6 @@ function filter(checkedItems) {
   return chosenProducts;
 }
 
-function inspectObject(obj) {
-  for (const key in obj) {
-    const element = obj[key];
-    if (Array.isArray(element) && element.length !== 0) return false;
-
-    if (!Array.isArray(element) && element) return false;
-
-    if (typeof element === "object" && Object.keys(element).length !== 0)
-      return inspectObject(element);
-  }
-
-  return true;
-}
-
 function checkoutProduct() {
   constant.cartList = [];
   localStorage.setItem("cartList", JSON.stringify(constant.cartList));
@@ -312,6 +317,9 @@ function fetch(url) {
       Page.renderProductGrid(constant.productList);
       Sidebar.renderFilterBrandOptions(constant.productList);
       Sidebar.renderFilterConditionOptions(constant.productList);
+      Sidebar.renderFilterChipOptions(constant.productList);
+      Sidebar.renderFilterRamOptions(constant.productList);
+      Sidebar.renderFilterStorageOptions(constant.productList);
     })
     .catch((err) => {
       console.log(err);

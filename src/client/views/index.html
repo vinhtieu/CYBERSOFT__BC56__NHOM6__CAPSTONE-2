@@ -17,12 +17,12 @@
     <title>Document</title>
   </head>
 
-  <body class="h-screen debug-screens">
+  <body class="h-screen bg-gray-100">
     <div class="h-full custom-grid">
       <!-- * Header * -->
       <header
         class="grid-header w-[100vw] fixed h-[70px] top-0 z-20 bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-600">
-        <nav class="container h-full mx-auto">
+        <nav class="container h-full mx-auto px-4 sm:px-0">
           <div
             class="flex flex-wrap items-center justify-center w-full h-full py-4">
             <a
@@ -89,7 +89,7 @@
             </div>
 
             <div
-              class="items-center justify-between hidden w-full ml-auto md:flex md:w-auto md:order-1"
+              class="items-center justify-between hidden w-full md:bg-transparent bg-white ml-auto md:flex md:w-auto md:order-1 absolute md:static top-16 md:p-0 p-4"
               id="navbar-sticky">
               <!-- * Search Bar *-->
               <div class="flex mt-6 mb-4 md:hidden">
@@ -122,7 +122,7 @@
               <!-- * Account and Shopping Cart * -->
               <ul
                 class="flex flex-col items-center gap-2 p-4 mt-4 font-medium border border-gray-100 rounded-lg cursor-pointer md:gap-6 md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li class="">
+                <li class="w-full">
                   <a
                     href="#"
                     class="mb-2 md:mb-0 relative hover:bg-gray-100 md:hover:bg-transparent md:after:absolute md:after:origin-center md:after:-bottom-1 md:after:w-0 md:after:h-0.5 md:after:bg-black md:after:transition-all md:after:duration-500 md:after:ease-in-out md:hover:after:w-full flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-black rounded md:p-0 md:dark:text-white"
@@ -131,14 +131,15 @@
                     <span class="md:hidden">Account</span>
                   </a>
                 </li>
-                <li>
+                <li class="w-full">
                   <button
                     id="cart-icon"
-                    class="mb-2 md:mb-0 relative cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:after:absolute md:after:origin-center md:after:-bottom-1 md:after:w-0 md:after:h-0.5 md:after:bg-black md:after:transition-all md:after:duration-500 md:after:ease-in-out md:hover:after:w-full flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-black rounded md:p-0 md:dark:text-white"
+                    class="mb-2 md:mb-0 relative w-full cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:after:absolute md:after:origin-center md:after:-bottom-1 md:after:w-0 md:after:h-0.5 md:after:bg-black md:after:transition-all md:after:duration-500 md:after:ease-in-out md:hover:after:w-full flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-black rounded md:p-0 md:dark:text-white"
                     aria-current="page">
                     <i
                       class="text-xl after:content md:text-2xl fa-solid fa-cart-shopping">
                     </i>
+                    <span class="md:hidden">Shopping Cart</span>
                     <div
                       id="productInCartNumber"
                       class="hidden text-center vertical-middle transition-all duration-75 ease-in-out absolute top-[-8px] right-[-8px] w-5 h-5 text-sm text-white bg-red-500 rounded-full"></div>
@@ -155,7 +156,7 @@
       <div class="grid-sidebar">
         <aside
           id="sidebar"
-          class="fixed bottom-0 left-0 w-64 overflow-auto transition-transform -translate-x-full h-scrseen top-16 2xl:translate-x-0"
+          class="fixed bottom-0 left-0 z-40 w-64 overflow-auto transition-transform -translate-x-full h-scrseen top-16 2xl:translate-x-0"
           aria-label="Sidebar">
           <div
             class="relative z-40 h-full px-3 py-4 overflow-y-auto bg-white border-e dark:bg-gray-800">
@@ -245,8 +246,8 @@
                 <button
                   type="button"
                   class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="chip-dropdown"
-                  data-collapse-toggle="chip-dropdown">
+                  aria-controls="filterChip"
+                  data-collapse-toggle="filterChip">
                   <span class="flex-1 ml-3 text-lg text-left whitespace-nowrap"
                     >Chip</span
                   >
@@ -264,37 +265,15 @@
                       d="m1 1 4 4 4-4" />
                   </svg>
                 </button>
-                <ul id="chip-dropdown" class="hidden py-2 space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Snapdragon</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Apple Bionic</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Dimensity
-                    </a>
-                  </li>
-                </ul>
+                <ul id="filterChip" class="hidden py-2 space-y-2"></ul>
               </li>
               <!-- * Ram *-->
               <li>
                 <button
                   type="button"
                   class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="ram-dropdown"
-                  data-collapse-toggle="ram-dropdown">
+                  aria-controls="filterRam"
+                  data-collapse-toggle="filterRam">
                   <span class="flex-1 ml-3 text-lg text-left whitespace-nowrap"
                     >Ram</span
                   >
@@ -312,7 +291,7 @@
                       d="m1 1 4 4 4-4" />
                   </svg>
                 </button>
-                <ul id="ram-dropdown" class="hidden py-2 space-y-2">
+                <ul id="filterRam" class="hidden py-2 space-y-2">
                   <li>
                     <a
                       href="#"
@@ -341,8 +320,8 @@
                 <button
                   type="button"
                   class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="storage-dropdown"
-                  data-collapse-toggle="storage-dropdown">
+                  aria-controls="filterStorage"
+                  data-collapse-toggle="filterStorage">
                   <span class="flex-1 ml-3 text-lg text-left whitespace-nowrap"
                     >Internal Storage</span
                   >
@@ -360,77 +339,7 @@
                       d="m1 1 4 4 4-4" />
                   </svg>
                 </button>
-                <ul id="storage-dropdown" class="hidden py-2 space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Products</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Billing</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Invoice</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!-- * Price *-->
-              <li>
-                <button
-                  type="button"
-                  class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="price-dropdown"
-                  data-collapse-toggle="price-dropdown">
-                  <span class="flex-1 ml-3 text-lg text-left whitespace-nowrap"
-                    >Price</span
-                  >
-                  <svg
-                    class="w-3 h-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6">
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 4 4 4-4" />
-                  </svg>
-                </button>
-                <ul id="price-dropdown" class="hidden py-2 space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Products</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Billing</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Invoice</a
-                    >
-                  </li>
-                </ul>
+                <ul id="filterStorage" class="hidden py-2 space-y-2"></ul>
               </li>
             </ul>
           </div>
@@ -438,7 +347,7 @@
       </div>
 
       <!-- * Main * -->
-      <div class="bg-gray-100 grid-main">
+      <div class="bg-gray-100 grid-main w-full h-full">
         <!-- * Toggle Sidebar Btn * -->
         <button
           data-drawer-target="sidebar"
@@ -460,18 +369,18 @@
 
       <!-- * Breadcrumb * -->
       <div class="w-full absolute left-0 top-[70px] z-10">
-        <nav class="container py-4 mx-auto">
+        <nav class="container py-4 mx-auto px-4 sm:px-0">
           <ol class="flex space-x-2 cursor-pointer" id="breadcrumb"></ol>
         </nav>
       </div>
 
       <!-- * Product Overview * -->
       <section
-        class="hidden absolute top-[70px] left-0 height-[calc(100vh - 70px)] w-full bg-white"
+        class="hidden absolute top-[70px] left-0 height-[calc(100vh - 70px)] w-full bg-white sm:px-0 px-4"
         id="productOverviewSection">
-        <div id="productOverview" class="container pt-6 mx-auto">
+        <div id="productOverview" class="container pt-10 sm:pt-6 mx-auto">
           <div class="grid grid-flow-row pt-6">
-            <div class="grid grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <!-- * Image *-->
               <div class="flex items-center justify-center col-span-1 bg-white">
                 <figure
@@ -647,7 +556,7 @@
                           <option value="DE">Germany</option>
                         </select> -->
 
-                          <div class="flex gap-2">
+                          <div class="flex flex-wrap flex-row gap-2">
                             <button
                               class="p-2 text-base text-black border border-black rounded active:text-white active:bg-black">
                               128GB
@@ -669,7 +578,7 @@
 
                         <!-- CTA -->
                         <div
-                          class="flex items-center justify-center gap-5 mt-10"
+                          class="flex flex-wrap flex-row items-center justify-center gap-5 mt-10"
                           id="productOverviewCta"></div>
                       </form>
                     </div>
@@ -884,7 +793,7 @@
 
       <!-- * Checkout * -->
       <section
-        class="hidden absolute top-[70px] left-0 w-full bg-gray-100"
+        class="hidden absolute top-[70px] left-0 w-full bg-gray-100 sm:px-0 p-4"
         id="productCheckoutSection">
         <div class="container flex-1 pt-16 mx-auto" id="productCheckout">
           <!-- Shopping Cart -->
@@ -894,7 +803,7 @@
               id="shoppingCartTitle">
               Your Cart
             </h1>
-            <div class="relative grid-cols-3 px-6 md:grid md:space-x-6 xl:px-0">
+            <div class="relative grid-cols-3 md:grid md:space-x-6 xl:px-0">
               <div
                 class="w-full col-span-2 rounded-lg"
                 id="shoppingCartProducts"></div>
@@ -913,11 +822,11 @@
 
           <!-- Success -->
           <div
-            class="fixed inset-0 top-0 left-0 z-20 flex items-center justify-center invisible h-screen transition-all duration-300 ease-in-out bg-center bg-no-repeat bg-cover outline-none opacity-0 min-w-screen focus:outline-none"
+            class="fixed inset-0 top-0 left-0 z-50 flex items-center justify-center invisible h-screen transition-all duration-300 ease-in-out bg-center bg-no-repeat bg-cover outline-none opacity-0 min-w-screen focus:outline-none"
             id="successModal">
             <div class="absolute inset-0 z-0 bg-black opacity-80"></div>
             <div
-              class="relative w-full max-w-lg p-5 mx-auto my-auto bg-white shadow-lg rounded-xl">
+              class="relative w-5/6 max-w-lg p-5 mx-auto my-auto bg-white shadow-lg rounded-xl">
               <!--content-->
               <div class="">
                 <!--body-->

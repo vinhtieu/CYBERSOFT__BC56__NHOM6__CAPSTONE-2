@@ -48,6 +48,17 @@
   }
 }
 
+@media screen and (max-width: 640px) {
+  .custom-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "header "
+      "main";
+  }
+}
+
 #productCheckoutSection,
 #productOverviewSection,
 #productGridSection,

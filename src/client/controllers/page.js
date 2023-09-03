@@ -12,9 +12,11 @@ class Page {
 
   //Get HTML
   static getProductOverviewPriceHTML = (product) => {
+    let price = product.price;
+    let formattedPrice = price.toLocaleString();
     return `
     <span class="mb-4 text-2xl font-base text-gray-900 sm:text-2xl">
-      ${product.price}$
+      ${formattedPrice}đ
     </span>
         `;
   };
@@ -76,9 +78,10 @@ class Page {
   };
 
   static getProductGridHTML = (array) => {
-    let html = array.map(
-      (product) =>
-        `
+    let html = array.map((product) => {
+      const price = product.price.toLocaleString();
+
+      return `
           <div class="min-h-[450px] px-3 py-4 rounded bg-white " onclick="handleShowingProductOverview(${product.id})">
                 <!-- * Img *-->
                   <a class="h-[55%] flex items-center justify-center mb-12 sm:mb-10 md:mb-6" href="#">
@@ -125,13 +128,13 @@ class Page {
 
                     <!-- *  Price *-->
                     <a class="flex items-center justify-between">
-                        <span class="text-2xl sm:text-xl font-bold text-black  dark:text-white">${product.price}đ</span>
+                        <span class="text-2xl sm:text-xl font-bold text-black  dark:text-white">${price}đ</span>
                     </a>
                 </div>
           </div>
 
-        `
-    );
+        `;
+    });
 
     return html.join("");
   };
@@ -153,23 +156,7 @@ class Page {
                 </h2>
                 <p class="mt-1 text-lg text-gray-700">36EU - 4US</p>
                 <div class="flex items-center border-gray-100 mt-8">
-                  <span
-                    id="removeQuantity"
-                    class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-                    -
-                  </span>
-                  <input
-                    readonly
-                    class="w-8 h-8 text-xs text-center bg-white border outline-none"
-                    type="number"
-                    value="2"
-                    min="1" />
-                  <span
-                  id="addQuantity"
 
-                    class="px-3 py-1 duration-100 bg-gray-100 rounded-r cursor-pointer hover:bg-blue-500 hover:text-blue-50">
-                    +
-                  </span>
                 </div>
                 <p class="mt-4 text-xl font-semibold text-blue-600">${product.price} VND</p>
               </div>
@@ -313,13 +300,17 @@ class Page {
   static renderCheckoutForm = (array) => {
     if (array.length === 0) {
     }
-    let priceArray = array.map((product) => product.price);
+    let priceArray = array.map((product) => product.price * 1);
     let subTotal = priceArray.reduce((prevValue, currValue) => {
       return prevValue + currValue;
     });
     let tax = subTotal * 0.1;
     let total = subTotal + tax;
-    let htmls = this.getCheckoutHTML(subTotal, tax, total);
+    let htmls = this.getCheckoutHTML(
+      subTotal.toLocaleString(),
+      tax.toLocaleString(),
+      total.toLocaleString()
+    );
     constant.checkoutForm.innerHTML = htmls;
   };
 

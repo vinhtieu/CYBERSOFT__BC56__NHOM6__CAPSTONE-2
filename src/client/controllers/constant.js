@@ -11,6 +11,9 @@ class Constant {
       this.checkedItems = {};
       this.checkedBrands = [];
       this.checkedConditions = [];
+      this.checkedChips = [];
+      this.checkedRams = [];
+      this.checkedStorages = [];
       this.loadingAnimation = this.$("#loadingAnimation");
 
       //Header
@@ -20,6 +23,9 @@ class Constant {
       this.sidebar = this.$("#sidebar");
       this.filterBrand = this.$("#filterBrand");
       this.filterCondition = this.$("#filterCondition");
+      this.filterChip = this.$("#filterChip");
+      this.filterRam = this.$("#filterRam");
+      this.filterStorage = this.$("#filterStorage");
 
       //Product Grid
       this.productGrid = this.$("#productGrid");
