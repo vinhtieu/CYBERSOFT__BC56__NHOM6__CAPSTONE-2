@@ -100,8 +100,8 @@ class Form {
     constant.updateModalProductSKU.value = sku;
     constant.updateModalProductName.value = name;
     constant.updateModalProductCondition.value = condition;
-    constant.updateModalProductPrice.value = price;
-    constant.updateModalProductSalePrice.value = salePrice;
+    constant.updateModalProductPrice.value = price.toLocaleString();
+    constant.updateModalProductSalePrice.value = salePrice.toLocaleString();
     constant.updateModalProductCategory.value = category;
     constant.updateModalProductBrand.value = brand;
     constant.updateModalProductQuantity.value = quantity;

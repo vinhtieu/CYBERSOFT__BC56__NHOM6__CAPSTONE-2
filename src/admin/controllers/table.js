@@ -1,4 +1,5 @@
 import constant from "./constant.js";
+import Util from "./util.js";
 class Table {
   static getTableHTML = (array) => {
     let html = array.map(
@@ -62,32 +63,9 @@ class Table {
   };
 
   static render = (array) => {
-    let html = this.getTableHTML(array);
+    const newList = Util.formatData(array);
+    const html = this.getTableHTML(newList);
     constant.tableBody.innerHTML = html;
-  };
-
-  static addClass = (element, type = "block") => {
-    element.classList.add(type);
-  };
-  static removeClass = (element, type = "hidden") => {
-    element.classList.remove(type);
-  };
-
-  static showTable = () => {
-    this.removeClass(constant.tableBody, "hidden");
-  };
-
-  static hideTable = () => {
-    this.addClass(constant.tableBody, "hidden");
-  };
-
-  static showLoading = () => {
-    this.addClass(constant.tableLoading, "flex");
-    this.removeClass(constant.tableLoading, "hidden");
-  };
-  static stopLoading = () => {
-    this.addClass(constant.tableLoading, "hidden");
-    this.removeClass(constant.tableLoading, "flex");
   };
 }
 

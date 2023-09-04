@@ -22,7 +22,7 @@
       <!-- * Header * -->
       <header
         class="grid-header w-[100vw] fixed h-[70px] top-0 z-20 bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-600">
-        <nav class="container h-full mx-auto px-4 sm:px-0">
+        <nav class="container h-full px-4 mx-auto sm:px-0">
           <div
             class="flex flex-wrap items-center justify-center w-full h-full py-4">
             <a
@@ -89,7 +89,7 @@
             </div>
 
             <div
-              class="items-center justify-between hidden w-full md:bg-transparent bg-white ml-auto md:flex md:w-auto md:order-1 absolute md:static top-16 md:p-0 p-4"
+              class="absolute items-center justify-between hidden w-full p-4 ml-auto bg-white md:bg-transparent md:flex md:w-auto md:order-1 md:static top-16 md:p-0"
               id="navbar-sticky">
               <!-- * Search Bar *-->
               <div class="flex mt-6 mb-4 md:hidden">
@@ -124,11 +124,24 @@
                 class="flex flex-col items-center gap-2 p-4 mt-4 font-medium border border-gray-100 rounded-lg cursor-pointer md:gap-6 md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li class="w-full">
                   <a
-                    href="#"
-                    class="mb-2 md:mb-0 relative hover:bg-gray-100 md:hover:bg-transparent md:after:absolute md:after:origin-center md:after:-bottom-1 md:after:w-0 md:after:h-0.5 md:after:bg-black md:after:transition-all md:after:duration-500 md:after:ease-in-out md:hover:after:w-full flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-black rounded md:p-0 md:dark:text-white"
-                    aria-current="page">
-                    <i class="text-xl md:text-2xl fa-solid fa-user"></i>
-                    <span class="md:hidden">Account</span>
+                    href="../../../index.html"
+                    class="mb-2 md:mb-0 relative w-full cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:after:absolute md:after:origin-center md:after:-bottom-1 md:after:w-0 md:after:h-0.5 md:after:bg-black md:after:transition-all md:after:duration-500 md:after:ease-in-out md:hover:after:w-full flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-black rounded md:p-0 md:dark:text-white">
+                    <svg
+                      class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 16">
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                    </svg>
+                    <span class="flex-1 ml-3 md:hidden whitespace-nowrap"
+                      >Log Out</span
+                    >
                   </a>
                 </li>
                 <li class="w-full">
@@ -347,7 +360,7 @@
       </div>
 
       <!-- * Main * -->
-      <div class="bg-gray-100 grid-main w-full h-full">
+      <div class="w-full h-full bg-gray-100 grid-main">
         <!-- * Toggle Sidebar Btn * -->
         <button
           data-drawer-target="sidebar"
@@ -369,7 +382,7 @@
 
       <!-- * Breadcrumb * -->
       <div class="w-full absolute left-0 top-[70px] z-10">
-        <nav class="container py-4 mx-auto px-4 sm:px-0">
+        <nav class="container px-4 py-4 mx-auto sm:px-0">
           <ol class="flex space-x-2 cursor-pointer" id="breadcrumb"></ol>
         </nav>
       </div>
@@ -378,9 +391,9 @@
       <section
         class="hidden absolute top-[70px] left-0 height-[calc(100vh - 70px)] w-full bg-white sm:px-0 px-4"
         id="productOverviewSection">
-        <div id="productOverview" class="container pt-10 sm:pt-6 mx-auto">
+        <div id="productOverview" class="container pt-10 mx-auto sm:pt-6">
           <div class="grid grid-flow-row pt-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <!-- * Image *-->
               <div class="flex items-center justify-center col-span-1 bg-white">
                 <figure
@@ -556,7 +569,7 @@
                           <option value="DE">Germany</option>
                         </select> -->
 
-                          <div class="flex flex-wrap flex-row gap-2">
+                          <div class="flex flex-row flex-wrap gap-2">
                             <button
                               class="p-2 text-base text-black border border-black rounded active:text-white active:bg-black">
                               128GB
@@ -578,7 +591,7 @@
 
                         <!-- CTA -->
                         <div
-                          class="flex flex-wrap flex-row items-center justify-center gap-5 mt-10"
+                          class="flex flex-row flex-wrap items-center justify-center gap-5 mt-10"
                           id="productOverviewCta"></div>
                       </form>
                     </div>

@@ -313,7 +313,7 @@ function fetch(url) {
   axios
     .get(url)
     .then((res) => {
-      constant.productList = res.data;
+      constant.productList = Util.formatData(res.data);
       Page.renderProductGrid(constant.productList);
       Sidebar.renderFilterBrandOptions(constant.productList);
       Sidebar.renderFilterConditionOptions(constant.productList);

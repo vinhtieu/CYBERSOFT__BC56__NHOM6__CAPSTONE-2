@@ -12,11 +12,9 @@ class Page {
 
   //Get HTML
   static getProductOverviewPriceHTML = (product) => {
-    let price = product.price;
-    let formattedPrice = price.toLocaleString();
     return `
     <span class="mb-4 text-2xl font-base text-gray-900 sm:text-2xl">
-      ${formattedPrice}đ
+      ${product.price}đ
     </span>
         `;
   };
@@ -298,9 +296,9 @@ class Page {
   };
 
   static renderCheckoutForm = (array) => {
-    if (array.length === 0) {
-    }
-    let priceArray = array.map((product) => product.price * 1);
+    let priceArray = array.map(
+      (product) => product.price.replace(/,/g, "") * 1
+    );
     let subTotal = priceArray.reduce((prevValue, currValue) => {
       return prevValue + currValue;
     });
