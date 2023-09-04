@@ -4,44 +4,41 @@ import Page from "./page.js";
 import Form from "./form.js";
 import Table from "./table.js";
 import Sidebar from "./sidebar.js";
+import Util from "./util.js";
 const PHONES_API = "https://64da260ee947d30a260ad89a.mockapi.io/Phones";
-let searchKeys = [];
+let searchList = [];
 
 document.addEventListener("DOMContentLoaded", start);
 
 constant.searchBar.addEventListener("input", (e) => {
-  let searchKey = e.target.value;
-  let list = constant.productList.filter((product) => {
-    for (const key in product) {
-      if (Object.hasOwnProperty.call(product, key)) {
-        let value = product[key];
-        value = stringToSlug(value);
-        searchKey = stringToSlug(searchKey);
-        if (value.includes(searchKey)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  });
-  Table.render(list);
+  const searchKey = e.target.value;
+  if (!searchList.includes(searchKey)) searchList.push(searchKey);
+
+  const newList = inspectItem();
+  Table.render(newList);
+  searchList = [];
 });
 
 constant.filterOptions.forEach((option) => {
   option.addEventListener("click", () => {
-    if (option.checked) {
-      if (!searchKeys.includes(option.id)) searchKeys.push(option.id);
-      filterItem();
+    switch (option.checked) {
+      case true:
+        if (!searchList.includes(option.id)) searchList.push(option.id);
+        inspectItem();
+        break;
+      case false:
+        if (searchList.includes(option.id)) {
+          let index = searchList.indexOf(option.id);
+          searchList.splice(index, 1);
+        }
+        break;
+    }
+
+    if (searchList.length > 0) {
+      const newList = inspectItem();
+      Table.render(newList);
     } else {
-      if (searchKeys.includes(option.id)) {
-        let index = searchKeys.indexOf(option.id);
-        searchKeys.splice(index, 1);
-      }
-      if (searchKeys.length > 0) {
-        filterItem();
-      } else {
-        Table.render(constant.productList);
-      }
+      Table.render(constant.productList);
     }
   });
 });
@@ -76,15 +73,33 @@ constant.updateModalProductImage.addEventListener("input", (e) => {
   constant.updateModalImgPreview.src = url;
 });
 
+constant.updateModalUpdateBtn.addEventListener("click", () => {
+  const productData = Form.getInputs("updateModal");
+  Util.hide(constant.updateModalUpdateBtn);
+  Util.show(constant.updateModalLoadingBtn);
+  Server.put(PHONES_API, id, productData, Table.render);
+});
+
 constant.addModalProductImage.addEventListener("input", (e) => {
   let url = e.target.value;
   constant.addModalImgPreview.src = url;
 });
 
+constant.addModalAddBtn.addEventListener("click", () => {
+  const productData = Form.getInputs("addModal");
+  Util.hide(constant.addModalAddBtn);
+  Util.show(constant.addModalLoadingBtn);
+  Server.post(PHONES_API, productData, Table.render);
+});
+
+constant.addModalOpenBtn.addEventListener("click", () => {
+  Form.clearInputs();
+});
+
 constant.addBtn.addEventListener("click", (e) => {
   const productData = Form.getInputs();
-  Form.hideAddBtn();
-  Form.showLoadingBtn();
+  Util.hide(constant.addBtn);
+  Util.show(constant.loadingBtn);
   Server.post(PHONES_API, productData, (data) => {
     try {
       Table.render(data);
@@ -95,57 +110,41 @@ constant.addBtn.addEventListener("click", (e) => {
   });
 });
 
-constant.addModalAddBtn.addEventListener("click", () => {
-  const productData = Form.getInputs("addModal");
-  Form.hideAddModalAddBtn();
-  Form.showAddModalLoadingBtn();
-  Server.post(PHONES_API, productData, Table.render);
-});
-
-constant.addModalOpenBtn.addEventListener("click", () => {
-  Form.clearInputs();
-});
-
 function stringToSlug(value) {
-  return value.toString().toLowerCase().replace(" ", "-");
+  return value.toString().toLowerCase().replace(/ /g, "-");
 }
 
-function filterItem() {
-  let list = constant.productList.filter((product) => {
+function inspectItem() {
+  let newList = constant.productList.filter((product) => {
     for (const productKey in product) {
-      if (Object.hasOwnProperty.call(product, productKey)) {
-        if (productKey !== "image") {
+      if (product.hasOwnProperty(productKey) && productKey !== "image") {
+        for (let element of searchList) {
           let value = product[productKey];
-          value = value.toString().toLowerCase().replace(" ", "-");
-          for (let searchKey of searchKeys) {
-            searchKey = searchKey.toString().toLowerCase().replace(" ", "-");
-            if (value.includes(searchKey)) {
-              return true;
-            }
+          value = value.stringToSlug();
+          element = element.stringToSlug();
+          if (value.includes(element)) {
+            return true;
           }
         }
       }
     }
     return false;
   });
-  Table.render(list);
+
+  return newList;
 }
 
 function editItem(id) {
   let url = `${PHONES_API}/${id}`;
-  Form.hideUpdateModalContent();
-  Form.showUpdateModalLoadingAnimation();
+  Util.hide(constant.updateModalContent);
+  Util.show(constant.updateModalLoadingAnimation, "flex");
   Server.fetch(url, Form.setInputsUpdateModal);
-
-  constant.updateModalUpdateBtn.addEventListener("click", () => {
-    const productData = Form.getInputs("updateModal");
-    Form.hideUpdateModalUpdateBtn();
-    Form.showUpdateModalLoadingBtn();
-    Server.put(PHONES_API, id, productData, Table.render);
-  });
+  Util.show(constant.updateProductModal);
+  Util.show(constant.updateModalContent);
 }
 
 function deleteItem(id) {
+  Util.show(constant.alertModal);
   constant.confirmBtn.addEventListener("click", () => {
     Table.hideTable();
     Table.showLoading();
@@ -156,8 +155,8 @@ function deleteItem(id) {
 function start() {
   window.editItem = editItem;
   window.deleteItem = deleteItem;
-  Table.hideTable();
-  Table.showLoading();
+  Util.show(constant.tableLoading);
+  Util.hide(constant.tableBody);
   Server.fetch(PHONES_API, (data) => {
     Table.render(data);
   });

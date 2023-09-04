@@ -1,14 +1,6 @@
 import constant from "./constant.js";
 
 class Form {
-  static add(element, type = "block") {
-    element.classList.add(type);
-  }
-
-  static remove(element, type = "hidden") {
-    element.classList.remove(type);
-  }
-
   //Product Creation Form
 
   static showAddBtn = () => {
@@ -20,6 +12,7 @@ class Form {
     this.add(constant.addBtn, "hidden");
     this.remove(constant.addBtn, "flex");
   };
+
   static showLoadingBtn = () => {
     this.add(constant.loadingBtn, "flex");
     this.remove(constant.loadingBtn, "hidden");
@@ -49,6 +42,7 @@ class Form {
     this.add(constant.updateModalLoadingAnimation, "hidden");
     this.remove(constant.updateModalLoadingAnimation, "flex");
   };
+
   static showUpdateModalLoadingBtn = () => {
     this.add(constant.updateModalLoadingBtn, "block");
     this.remove(constant.updateModalLoadingBtn, "hidden");

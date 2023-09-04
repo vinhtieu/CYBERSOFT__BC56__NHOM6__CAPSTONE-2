@@ -21,8 +21,6 @@ class Table {
         <td class="px-4 py-3">
           <button
             onclick="editItem('${obj.id}')"
-            data-modal-toggle="updateProductModal"
-            data-modal-target="updateProductModal"
             class="w-[50px] h-[40px] inline-flex items-center justify-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
             type="button">
             <i class="text-lg text-blue-500 fa-solid fa-pen-to-square"></i>
@@ -30,8 +28,6 @@ class Table {
         </td>
         <td class="px-4 py-3">
           <button
-            data-modal-target="alertModal"
-            data-modal-toggle="alertModal"
             onclick="deleteItem('${obj.id}')"
             class="w-[50px] h-[40px] inline-flex items-center justify-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
             type="button">
