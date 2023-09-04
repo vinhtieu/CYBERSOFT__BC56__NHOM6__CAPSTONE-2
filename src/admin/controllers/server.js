@@ -1,10 +1,10 @@
-import Table from "./table.js";
+import Util from "./util.js";
 import Form from "./form.js";
 import constant from "./constant.js";
 
 class Server {
-  static fetch = (url, callback) => {
-    axios
+  static fetch = async (url, callback) => {
+    await axios
       .get(url)
       .then((res) => {
         constant.productList = res.data;
@@ -14,23 +14,17 @@ class Server {
         console.log(err);
       })
       .finally(() => {
-        Form.hideLoadingBtn();
-        Form.showAddBtn();
-        Form.showUpdateModalUpdateBtn();
-        Form.hideUpdateModalLoadingBtn();
-        Form.hideUpdateModalLoadingAnimation();
-        Form.showUpdateModalContent();
-        Form.hideAddModalLoadingBtn();
-        Form.showAddModalAddBtn();
+        Util.hide(constant.loadingBtn);
+        Util.hide(constant.addModalLoadingBtn);
+        Util.hide(constant.updateModalLoadingBtn);
+        Util.hide(constant.loadingAnimation, "flex");
         Form.clearInputs("addModal");
         Form.clearInputs();
-        Table.stopLoading();
-        Table.showTable();
       });
   };
 
-  static post = (url, content, callback) => {
-    axios
+  static post = async (url, content, callback) => {
+    await axios
       .post(url, content)
       .then(() => {
         this.fetch(url, callback);
@@ -40,21 +34,25 @@ class Server {
       });
   };
 
-  static put = (url, id, content, callback) => {
+  static put = async (url, id, content, callback) => {
     const api = `${url}/${id}`;
-    axios
+    await axios
       .put(api, content)
       .then(() => {
         this.fetch(url, callback);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally((param) => {
+        Util.show(constant.updateModalUpdateBtn);
+        Util.hide(constant.updateModalLoadingBtn);
       });
   };
 
-  static delete = (url, id, callback) => {
+  static delete = async (url, id, callback) => {
     const api = url + "/" + id;
-    axios
+    await axios
       .delete(api)
       .then(() => {
         this.fetch(url, callback);

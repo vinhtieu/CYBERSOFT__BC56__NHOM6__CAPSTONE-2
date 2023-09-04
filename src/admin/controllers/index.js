@@ -1,6 +1,5 @@
 import constant from "./constant.js";
 import Server from "./server.js";
-import Page from "./page.js";
 import Form from "./form.js";
 import Table from "./table.js";
 import Sidebar from "./sidebar.js";
@@ -44,22 +43,22 @@ constant.filterOptions.forEach((option) => {
 });
 
 constant.sidebar_table_btn.addEventListener("click", () => {
-  Page.openProductTable();
-  Page.closeProductCreationForm();
+  Util.hide(constant.productCreationForm);
+  Util.show(constant.productTable);
 });
 
 constant.sidebar_product_btn.addEventListener("click", () => {
-  Page.closeProductTable();
-  Page.openProductCreationForm();
+  Util.hide(constant.productTable);
+  Util.show(constant.productCreationForm);
   Form.clearInputs();
 });
 
 constant.sidebarButtons.forEach((button) => {
   button.addEventListener("click", () => {
     constant.sidebarButtons.forEach((button) => {
-      Sidebar.removeActive(button);
+      Util.inactive(button);
     });
-    Sidebar.addActive(button);
+    Util.active(button);
   });
 });
 
@@ -73,11 +72,8 @@ constant.updateModalProductImage.addEventListener("input", (e) => {
   constant.updateModalImgPreview.src = url;
 });
 
-constant.updateModalUpdateBtn.addEventListener("click", () => {
-  const productData = Form.getInputs("updateModal");
-  Util.hide(constant.updateModalUpdateBtn);
-  Util.show(constant.updateModalLoadingBtn);
-  Server.put(PHONES_API, id, productData, Table.render);
+constant.updateModalCloseBtn.addEventListener("click", (e) => {
+  Util.hide(constant.updateProductModal);
 });
 
 constant.addModalProductImage.addEventListener("input", (e) => {
@@ -110,9 +106,9 @@ constant.addBtn.addEventListener("click", (e) => {
   });
 });
 
-function stringToSlug(value) {
-  return value.toString().toLowerCase().replace(/ /g, "-");
-}
+constant.alertModalCloseBtn.addEventListener("click", () => {
+  Util.hide(constant.alertModal);
+});
 
 function inspectItem() {
   let newList = constant.productList.filter((product) => {
@@ -120,8 +116,8 @@ function inspectItem() {
       if (product.hasOwnProperty(productKey) && productKey !== "image") {
         for (let element of searchList) {
           let value = product[productKey];
-          value = value.stringToSlug();
-          element = element.stringToSlug();
+          value = Util.stringToSlug(value);
+          element = Util.stringToSlug(element);
           if (value.includes(element)) {
             return true;
           }
@@ -134,17 +130,31 @@ function inspectItem() {
   return newList;
 }
 
-function editItem(id) {
+async function editItem(id) {
   let url = `${PHONES_API}/${id}`;
-  Util.hide(constant.updateModalContent);
-  Util.show(constant.updateModalLoadingAnimation, "flex");
-  Server.fetch(url, Form.setInputsUpdateModal);
-  Util.show(constant.updateProductModal);
-  Util.show(constant.updateModalContent);
+  Util.show(constant.loadingAnimation, "flex");
+  try {
+    await Server.fetch(url, Form.setInputsUpdateModal);
+  } catch (error) {
+  } finally {
+    Util.show(constant.updateProductModal, "flex");
+    Util.show(constant.updateModalUpdateBtn);
+  }
+
+  constant.updateModalUpdateBtn.addEventListener("click", () => {
+    const productData = Form.getInputs("updateModal");
+    Util.hide(constant.updateModalUpdateBtn);
+    Util.show(constant.updateModalLoadingBtn);
+    Server.put(PHONES_API, id, productData, Table.render);
+  });
 }
 
 function deleteItem(id) {
-  Util.show(constant.alertModal);
+  Util.show(constant.alertModal, "flex");
+  console.log(
+    "🚀 ~ file: index.js:150 ~ deleteItem ~ constant.alertModal:",
+    constant.alertModal
+  );
   constant.confirmBtn.addEventListener("click", () => {
     Table.hideTable();
     Table.showLoading();
@@ -155,9 +165,10 @@ function deleteItem(id) {
 function start() {
   window.editItem = editItem;
   window.deleteItem = deleteItem;
-  Util.show(constant.tableLoading);
+  Util.show(constant.loadingAnimation, "flex");
   Util.hide(constant.tableBody);
   Server.fetch(PHONES_API, (data) => {
     Table.render(data);
   });
+  Util.show(constant.tableBody, "table");
 }

@@ -8,6 +8,8 @@ class Constant {
       this.productList;
       this.searchBar = this.$("#simple-search");
       this.filterOptions = this.$$("#filterOptions li input");
+      this.loadingAnimation = this.$("#loadingAnimation");
+
       //Sidebar
       this.sidebar_table_btn = this.$("#sidebar-table__btn");
       this.sidebar_product_btn = this.$("#sidebar-product__btn");
@@ -16,7 +18,6 @@ class Constant {
       //Product Table
       this.productTable = this.$("#productTable");
       this.tableBody = this.$("#tableBody");
-      this.tableLoading = this.$("#tableLoading");
       this.tableAlert = this.$("#tableAlert");
       this.tableRows = this.$("#tableBody");
 
@@ -57,7 +58,7 @@ class Constant {
       this.updateModalContent = this.$("#updateModalContent");
       this.updateModalLoadingBtn = this.$("#updateModalLoadingBtn");
       this.updateModalUpdateBtn = this.$("#updateModalUpdateBtn");
-      this.updateModalLoadingAnimation = this.$("#updateModalLoadingAnimation");
+      this.updateModalCloseBtn = this.$("#updateModalCloseBtn");
 
       // Add Modal
       this.addProductModal = this.$("#addProductModal");
@@ -75,13 +76,14 @@ class Constant {
       this.addModalProductSpecifications = this.$(
         "#addModalProductSpecifications"
       );
-
       this.addModalOpenBtn = this.$("#addModalOpenBtn");
       this.addModalAddBtn = this.$("#addModalAddBtn");
       this.addModalLoadingBtn = this.$("#addModalLoadingBtn");
 
       // Alert Modal
+      this.alertModal = this.$("#alertModal");
       this.confirmBtn = this.$("#confirmBtn");
+      this.alertModalCloseBtn = this.$("#alertModalCloseBtn");
     }
     return Constant.instance;
   }

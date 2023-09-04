@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../../../public/style.css" />
     <title>Document</title>
   </head>
-  <body class="">
+  <body class="debug-screens">
     <!-- ! Sidebar with navbar - begin !-->
 
     <nav
@@ -154,7 +154,7 @@
           <li>
             <button
               href="#"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              class="flex items-center w-full p-2 text-left text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <svg
                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                 aria-hidden="true"
@@ -186,8 +186,10 @@
           <!-- Start coding here -->
           <div
             class="relative p-4 overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+            <!-- navbar -->
             <div
               class="flex flex-col items-center justify-between pb-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+              <!-- searchbar -->
               <div class="w-full md:w-1/2">
                 <form class="flex items-center">
                   <label for="simple-search" class="sr-only">Search</label>
@@ -215,8 +217,12 @@
                   </div>
                 </form>
               </div>
+
+              <!-- Buttons -->
               <div
                 class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                <!-- Add Button -->
+
                 <button
                   id="addModalOpenBtn"
                   type="button"
@@ -236,7 +242,10 @@
                   </svg>
                   Add product
                 </button>
-                <div class="flex items-center w-full space-x-3 md:w-auto">
+
+                <!-- Filter Dropdown -->
+                <div
+                  class="relative flex items-center w-full space-x-3 md:w-auto">
                   <button
                     id="filterDropdownButton"
                     data-dropdown-toggle="filterDropdown"
@@ -268,7 +277,7 @@
                   </button>
                   <div
                     id="filterDropdown"
-                    class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+                    class="absolute z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
                     <h6
                       class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
                       Choose brand
@@ -455,41 +464,19 @@
                 <!-- * Body *-->
                 <tbody id="tableBody" class="text-lg"></tbody>
               </table>
-              <!-- * Loading Animation *-->
-              <div
-                class="items-center justify-center hidden w-full border-0 border-gray-200 h-[500px] dark:bg-gray-800 dark:border-gray-700"
-                id="tableLoading">
-                <div role="status">
-                  <svg
-                    aria-hidden="true"
-                    class="w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-                    viewBox="0 0 100 101"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                      fill="currentColor" />
-                    <path
-                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                      fill="currentFill" />
-                  </svg>
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
 
               <!-- * Alert Modal * -->
               <div
                 id="alertModal"
-                data-modal-target="alertModal"
-                tabindex="-1"
-                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-md max-h-full">
+                class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full h-full border-0">
+                <div class="absolute inset-0 z-10 bg-black opacity-50"></div>
+                <div class="relative z-20 w-full max-w-md max-h-full">
                   <div
                     class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <button
+                      id="alertModalCloseBtn"
                       type="button"
-                      class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                      data-modal-hide="alertModal">
+                      class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
                       <svg
                         class="w-3 h-3"
                         aria-hidden="true"
@@ -525,13 +512,11 @@
                       </h3>
                       <button
                         id="confirmBtn"
-                        data-modal-hide="alertModal"
                         type="button"
                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                         Yes, I'm sure
                       </button>
                       <button
-                        data-modal-hide="alertModal"
                         type="button"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                         No, cancel
@@ -546,11 +531,14 @@
                 id="addProductModal"
                 tabindex="-1"
                 aria-hidden="true"
-                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative max-h-full w-[1050px]">
+                class="fixed top-0 left-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full">
+                <div class="absolute inset-0 z-10 bg-black opacity-50"></div>
+
+                <div
+                  class="relative z-20 w-full h-[90%] mx-auto my-auto max-w-7xl">
                   <!-- Modal content -->
                   <div
-                    class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    class="relative h-full grid grid-rows-[75px,1fr,75px] bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div
                       class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
@@ -579,16 +567,16 @@
                       </button>
                     </div>
                     <!-- Modal body -->
-                    <form action="#" class="overflow-auto h-[900px]">
+                    <form action="#" class="p-6 space-y-6 overflow-auto">
                       <div class="grid gap-4 p-6">
                         <div
                           class="grid grid-cols-3 gap-4 px-8 pt-6 mb-8 xl:grid-cols-2">
                           <!-- * Image *-->
                           <div
                             class="flex justify-between col-span-2 gap-16 xl:col-span-1">
-                            <div class="w-full h-full pe-8">
+                            <div class="w-full pe-8">
                               <figure
-                                class="flex items-center justify-center w-full h-full rounded-lg">
+                                class="sticky flex items-center justify-center w-full rounded-lg top-36 left-1/2">
                                 <img
                                   id="addModalImgPreview"
                                   class="object-contain object-center max-w-full max-h-full mx-auto align-middle"
@@ -690,9 +678,9 @@
                                   <option value="" disabled selected>
                                     --Select--
                                   </option>
-                                  <option value="electronics">Phones</option>
-                                  <option value="clothing">Laptops</option>
-                                  <option value="home">PCs</option>
+                                  <option value="Phones">Phones</option>
+                                  <option value="Laptops">Laptops</option>
+                                  <option value="PCs">PCs</option>
                                   <!-- Add more options as needed -->
                                 </select>
                               </div>
@@ -713,7 +701,7 @@
 
                                   <option value="Apple">Apple</option>
                                   <option value="Samsung">Samsung</option>
-                                  <option value="Xiao Mi">Xiao Mi</option>
+                                  <option value="Xiaomi">Xiaomi</option>
                                   <!-- Add more options as needed -->
                                 </select>
                               </div>
@@ -809,31 +797,26 @@
               </div>
 
               <!-- * Update Modal * -->
-
               <div
-                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                id="updateProductModal">
-                <!-- Backdrop -->
-                <div class="absolute inset-0 z-0 bg-black opacity-80"></div>
-                <!-- Modal -->
+                id="updateProductModal"
+                class="fixed top-0 left-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full">
+                <div class="absolute inset-0 z-10 bg-black opacity-50"></div>
                 <div
-                  class="relative w-5/6 max-w-lg p-5 mx-auto my-auto bg-white shadow-lg rounded-xl">
-                  <!--content-->
+                  class="relative z-20 w-full h-[90%] mx-auto my-auto max-w-7xl">
+                  <!-- Modal content -->
                   <div
-                    id="updateModalContent"
-                    class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    class="relative h-full grid grid-rows-[75px,1fr,75px] bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div
                       class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                       <h3
-                        id="modal__title"
                         class="text-xl font-medium text-gray-900 dark:text-white">
-                        Update Product
+                        Update Modal
                       </h3>
                       <button
+                        id="updateModalCloseBtn"
                         type="button"
-                        class="inline-flex items-center justify-center w-8 h-8 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="updateProductModal">
+                        class="inline-flex items-center justify-center w-8 h-8 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
                         <svg
                           class="w-3 h-3"
                           aria-hidden="true"
@@ -851,180 +834,178 @@
                       </button>
                     </div>
                     <!-- Modal body -->
-                    <form action="#" class="overflow-auto h-[900px]">
-                      <div class="grid gap-4 p-6">
+                    <div class="p-6 space-y-6 overflow-auto">
+                      <div
+                        class="grid grid-cols-3 gap-4 px-8 pt-6 mb-8 xl:grid-cols-2">
+                        <!-- * Image *-->
                         <div
-                          class="grid grid-cols-3 gap-4 px-8 pt-6 mb-8 xl:grid-cols-2">
-                          <!-- * Image *-->
-                          <div
-                            class="flex justify-between col-span-2 gap-16 xl:col-span-1">
-                            <div class="w-full h-full pe-8">
-                              <figure
-                                class="flex items-center justify-center w-full h-full rounded-lg">
-                                <img
-                                  id="updateModalImgPreview"
-                                  class="object-contain object-center max-w-full max-h-full mx-auto align-middle"
-                                  src=""
-                                  srcset="
-                                  "
-                                  onerror="this.src='https://avatars.mds.yandex.net/i?id=03c47efc307cd97f6a3d6dc5cb1cf9b2debfb70e-7761267-images-thumbs&n=13'" />
-                              </figure>
-                            </div>
-                          </div>
-
-                          <!-- * Product Detais *-->
-                          <div class="col-span-1">
-                            <!-- Product info -->
-                            <form class="flex flex-col h-full">
-                              <!-- * SKU *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductSKU"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  SKU
-                                </label>
-                                <input
-                                  type="text"
-                                  id="updateModalProductSKU"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="SKU001"
-                                  required />
-                              </div>
-                              <!-- * Name *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductName"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Name
-                                </label>
-                                <input
-                                  type="text"
-                                  id="updateModalProductName"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="Apple - iPhone 14 Pro 512GB - Deep Purple"
-                                  required />
-                              </div>
-                              <!-- * Condition *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductCondition"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Condition
-                                </label>
-                                <select
-                                  id="updateModalProductCondition"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  required>
-                                  <option value="" disabled selected>
-                                    -- Select --
-                                  </option>
-                                  <option value="new">New</option>
-                                  <option value="used">Used</option>
-                                  <!-- Add more options as needed -->
-                                </select>
-                              </div>
-                              <!-- * Price *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductPrice"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Price
-                                </label>
-                                <input
-                                  type="number"
-                                  id="updateModalProductPrice"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="Enter product price"
-                                  required />
-                              </div>
-                              <!-- * Sale Price *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductSalePrice"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Sale Price
-                                </label>
-                                <input
-                                  type="number"
-                                  id="updateModalProductSalePrice"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="Enter sale price (if applicable)" />
-                              </div>
-                              <!-- * Category *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductCategory"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Category
-                                </label>
-                                <select
-                                  id="updateModalProductCategory"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  required>
-                                  <option value="" disabled selected>
-                                    --Select--
-                                  </option>
-                                  <option value="electronics">Phones</option>
-                                  <option value="clothing">Laptops</option>
-                                  <option value="home">PCs</option>
-                                  <!-- Add more options as needed -->
-                                </select>
-                              </div>
-                              <!-- * Brand *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductBrand"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Brand
-                                </label>
-                                <select
-                                  id="updateModalProductBrand"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  required>
-                                  <option value="" disabled selected>
-                                    --Select--
-                                  </option>
-
-                                  <option value="smartphones">
-                                    Smartphones
-                                  </option>
-                                  <option value="laptops">Laptops</option>
-                                  <option value="shirts">Shirts</option>
-                                  <!-- Add more options as needed -->
-                                </select>
-                              </div>
-                              <!-- * Quantity *-->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductQuantity"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Quantity
-                                </label>
-                                <input
-                                  type="number"
-                                  id="updateModalProductQuantity"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder="Enter product quantity"
-                                  required />
-                              </div>
-                              <!-- * Image *  -->
-                              <div class="mb-4">
-                                <label
-                                  for="updateModalProductImage"
-                                  class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
-                                  Image
-                                </label>
-                                <input
-                                  type="url"
-                                  id="updateModalProductImage"
-                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                  placeholder=""
-                                  required />
-                              </div>
-                            </form>
+                          class="flex justify-between col-span-2 gap-16 xl:col-span-1">
+                          <div class="w-full pe-8">
+                            <figure
+                              class="sticky flex items-center justify-center w-full rounded-lg top-36 left-1/2">
+                              <img
+                                id="updateModalImgPreview"
+                                class="object-contain object-center max-w-full mx-auto align-middle max-"
+                                src=""
+                                srcset="
+                                    "
+                                onerror="this.src='https://avatars.mds.yandex.net/i?id=03c47efc307cd97f6a3d6dc5cb1cf9b2debfb70e-7761267-images-thumbs&n=13'" />
+                            </figure>
                           </div>
                         </div>
 
+                        <!-- * Product Detais *-->
+                        <div class="col-span-1">
+                          <!-- Product info -->
+                          <form class="flex flex-col h-full">
+                            <!-- * SKU *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductSKU"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                SKU
+                              </label>
+                              <input
+                                type="text"
+                                id="updateModalProductSKU"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="SKU001"
+                                required />
+                            </div>
+                            <!-- * Name *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductName"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Name
+                              </label>
+                              <input
+                                type="text"
+                                id="updateModalProductName"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Apple - iPhone 14 Pro 512GB - Deep Purple"
+                                required />
+                            </div>
+                            <!-- * Condition *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductCondition"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Condition
+                              </label>
+                              <select
+                                id="updateModalProductCondition"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                                <option value="" disabled selected>
+                                  -- Select --
+                                </option>
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
+                                <!-- Add more options as needed -->
+                              </select>
+                            </div>
+                            <!-- * Price *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductPrice"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Price
+                              </label>
+                              <input
+                                type="number"
+                                id="updateModalProductPrice"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Enter product price"
+                                required />
+                            </div>
+                            <!-- * Sale Price *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductSalePrice"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Sale Price
+                              </label>
+                              <input
+                                type="number"
+                                id="updateModalProductSalePrice"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Enter sale price (if applicable)" />
+                            </div>
+                            <!-- * Category *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductCategory"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Category
+                              </label>
+                              <select
+                                id="updateModalProductCategory"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                                <option value="" disabled selected>
+                                  --Select--
+                                </option>
+                                <option value="Phones">Phones</option>
+                                <option value="Laptops">Laptops</option>
+                                <option value="PCs">PCs</option>
+                                <!-- Add more options as needed -->
+                              </select>
+                            </div>
+                            <!-- * Brand *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductBrand"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Brand
+                              </label>
+                              <select
+                                id="updateModalProductBrand"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                                <option value="" disabled selected>
+                                  --Select--
+                                </option>
+
+                                <option value="Apple">Apple</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Xiaomi">Xiaomi</option>
+                                <option value="Oppo">Oppo</option>
+                                <!-- Add more options as needed -->
+                              </select>
+                            </div>
+                            <!-- * Quantity *-->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductQuantity"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Quantity
+                              </label>
+                              <input
+                                type="number"
+                                id="updateModalProductQuantity"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Enter product quantity"
+                                required />
+                            </div>
+                            <!-- * Image *  -->
+                            <div class="mb-4">
+                              <label
+                                for="updateModalProductImage"
+                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">
+                                Image
+                              </label>
+                              <input
+                                type="url"
+                                id="updateModalProductImage"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder=""
+                                required />
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div>
                         <span
                           for="updateModalProductOverview"
                           class="text-2xl font-semibold"
@@ -1036,6 +1017,8 @@
                           placeholder="Enter product Overview..."
                           rows="4"
                           required></textarea>
+                      </div>
+                      <div>
                         <span
                           for="updateModalProductSpecifications"
                           class="text-2xl font-semibold"
@@ -1048,10 +1031,10 @@
                           rows="4"
                           required></textarea>
                       </div>
-                    </form>
+                    </div>
                     <!-- Modal footer -->
                     <div
-                      class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                      class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                       <button
                         id="updateModalUpdateBtn"
                         type="submit"
@@ -1081,32 +1064,30 @@
                       </button>
                     </div>
                   </div>
-                  <!-- * Loading Animation *-->
-                  <div
-                    class="items-center justify-center hidden w-full border-0 border-gray-200 h-[500px] dark:bg-gray-800 dark:border-gray-700"
-                    id="updateModalLoadingAnimation">
-                    <div role="status">
-                      <svg
-                        aria-hidden="true"
-                        class="w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-                        viewBox="0 0 100 101"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                          fill="currentColor" />
-                        <path
-                          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                          fill="currentFill" />
-                      </svg>
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                  </div>
                 </div>
               </div>
 
-
-
+              <!-- * Loading Animation *-->
+              <div
+                class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full h-full border-0"
+                id="loadingAnimation">
+                <!-- Backdrop -->
+                <div class="absolute inset-0 z-0 bg-black opacity-50"></div>
+                <div role="status">
+                  <svg
+                    aria-hidden="true"
+                    class="w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor" />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentFill" />
+                  </svg>
+                  <span class="sr-only">Loading...</span>
                 </div>
               </div>
             </div>
@@ -1222,9 +1203,9 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required>
                     <option value="" disabled selected>--Select--</option>
-                    <option value="electronics">Phones</option>
-                    <option value="clothing">Laptops</option>
-                    <option value="home">PCs</option>
+                    <option value="Phones">Phones</option>
+                    <option value="Laptops">Laptops</option>
+                    <option value="PCs">PCs</option>
                     <!-- Add more options as needed -->
                   </select>
                 </div>
@@ -1243,6 +1224,7 @@
                     <option value="Apple">Apple</option>
                     <option value="Samsung">Samsung</option>
                     <option value="Xiaomi">Xiaomi</option>
+                    <option value="Oppo">Oppo</option>
                     <!-- Add more options as needed -->
                   </select>
                 </div>
