@@ -246,8 +246,11 @@ function checkBreadcrumbList(item) {
   return false;
 }
 
-function buyProduct(productId) {
-  const product = getProductByKey(productId);
+function buyProduct() {
+  handleShowingSuccessModal();
+  setInterval(() => {
+    handleHidingSuccessModal();
+  }, 1000);
 }
 
 function addProduct(productId) {
