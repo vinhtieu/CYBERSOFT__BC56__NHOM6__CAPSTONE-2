@@ -1,88 +1,89 @@
 import constant from "./constant.js";
+import Util from "./util.js";
 
 class Form {
   //Product Creation Form
 
-  static showAddBtn = () => {
-    this.add(constant.addBtn, "flex");
-    this.remove(constant.addBtn, "hidden");
-  };
+  // static showAddBtn = () => {
+  //   this.add(constant.addBtn, "flex");
+  //   this.remove(constant.addBtn, "hidden");
+  // };
 
-  static hideAddBtn = () => {
-    this.add(constant.addBtn, "hidden");
-    this.remove(constant.addBtn, "flex");
-  };
+  // static hideAddBtn = () => {
+  //   this.add(constant.addBtn, "hidden");
+  //   this.remove(constant.addBtn, "flex");
+  // };
 
-  static showLoadingBtn = () => {
-    this.add(constant.loadingBtn, "flex");
-    this.remove(constant.loadingBtn, "hidden");
-  };
+  // static showLoadingBtn = () => {
+  //   this.add(constant.loadingBtn, "flex");
+  //   this.remove(constant.loadingBtn, "hidden");
+  // };
 
-  static hideLoadingBtn = () => {
-    this.add(constant.loadingBtn, "hidden");
-    this.remove(constant.loadingBtn, "flex");
-  };
+  // static hideLoadingBtn = () => {
+  //   this.add(constant.loadingBtn, "hidden");
+  //   this.remove(constant.loadingBtn, "flex");
+  // };
 
-  //Update Modal
+  // //Update Modal
 
-  static showUpdateModalContent = () => {
-    this.remove(constant.updateModalContent, "hidden");
-  };
+  // static showUpdateModalContent = () => {
+  //   this.remove(constant.updateModalContent, "hidden");
+  // };
 
-  static hideUpdateModalContent = () => {
-    this.add(constant.updateModalContent, "hidden");
-  };
+  // static hideUpdateModalContent = () => {
+  //   this.add(constant.updateModalContent, "hidden");
+  // };
 
-  static showUpdateModalLoadingAnimation = () => {
-    this.add(constant.updateModalLoadingAnimation, "flex");
-    this.remove(constant.updateModalLoadingAnimation, "hidden");
-  };
+  // static showUpdateModalLoadingAnimation = () => {
+  //   this.add(constant.updateModalLoadingAnimation, "flex");
+  //   this.remove(constant.updateModalLoadingAnimation, "hidden");
+  // };
 
-  static hideUpdateModalLoadingAnimation = () => {
-    this.add(constant.updateModalLoadingAnimation, "hidden");
-    this.remove(constant.updateModalLoadingAnimation, "flex");
-  };
+  // static hideUpdateModalLoadingAnimation = () => {
+  //   this.add(constant.updateModalLoadingAnimation, "hidden");
+  //   this.remove(constant.updateModalLoadingAnimation, "flex");
+  // };
 
-  static showUpdateModalLoadingBtn = () => {
-    this.add(constant.updateModalLoadingBtn, "block");
-    this.remove(constant.updateModalLoadingBtn, "hidden");
-  };
+  // static showUpdateModalLoadingBtn = () => {
+  //   this.add(constant.updateModalLoadingBtn, "block");
+  //   this.remove(constant.updateModalLoadingBtn, "hidden");
+  // };
 
-  static hideUpdateModalLoadingBtn = () => {
-    this.add(constant.updateModalLoadingBtn, "hidden");
-    this.remove(constant.updateModalLoadingBtn, "block");
-  };
-  static showUpdateModalUpdateBtn = () => {
-    this.add(constant.updateModalUpdateBtn, "block");
-    this.remove(constant.updateModalUpdateBtn, "hidden");
-  };
+  // static hideUpdateModalLoadingBtn = () => {
+  //   this.add(constant.updateModalLoadingBtn, "hidden");
+  //   this.remove(constant.updateModalLoadingBtn, "block");
+  // };
+  // static showUpdateModalUpdateBtn = () => {
+  //   this.add(constant.updateModalUpdateBtn, "block");
+  //   this.remove(constant.updateModalUpdateBtn, "hidden");
+  // };
 
-  static hideUpdateModalUpdateBtn = () => {
-    this.add(constant.updateModalUpdateBtn, "hidden");
-    this.remove(constant.updateModalUpdateBtn, "block");
-  };
+  // static hideUpdateModalUpdateBtn = () => {
+  //   this.add(constant.updateModalUpdateBtn, "hidden");
+  //   this.remove(constant.updateModalUpdateBtn, "block");
+  // };
 
-  //Add Modal
+  // //Add Modal
 
-  static showAddModalAddBtn = () => {
-    this.add(constant.addModalAddBtn, "block");
-    this.remove(constant.addModalAddBtn, "hidden");
-  };
+  // static showAddModalAddBtn = () => {
+  //   this.add(constant.addModalAddBtn, "block");
+  //   this.remove(constant.addModalAddBtn, "hidden");
+  // };
 
-  static hideAddModalAddBtn = () => {
-    this.add(constant.addModalAddBtn, "hidden");
-    this.remove(constant.addModalAddBtn, "block");
-  };
+  // static hideAddModalAddBtn = () => {
+  //   this.add(constant.addModalAddBtn, "hidden");
+  //   this.remove(constant.addModalAddBtn, "block");
+  // };
 
-  static showAddModalLoadingBtn = () => {
-    this.add(constant.addModalLoadingBtn, "flex");
-    this.remove(constant.addModalLoadingBtn, "hidden");
-  };
+  // static showAddModalLoadingBtn = () => {
+  //   this.add(constant.addModalLoadingBtn, "flex");
+  //   this.remove(constant.addModalLoadingBtn, "hidden");
+  // };
 
-  static hideAddModalLoadingBtn = () => {
-    this.add(constant.addModalLoadingBtn, "hidden");
-    this.remove(constant.addModalLoadingBtn, "flex");
-  };
+  // static hideAddModalLoadingBtn = () => {
+  //   this.add(constant.addModalLoadingBtn, "hidden");
+  //   this.remove(constant.addModalLoadingBtn, "flex");
+  // };
 
   static setInputsUpdateModal = ({
     sku,
@@ -112,7 +113,7 @@ class Form {
     // constant.updateModalProductId.value = id;
   };
 
-  static getInputs = (modal = "") => {
+  static getInputs = (modal) => {
     const product = {
       sku: "",
       name: "",
@@ -205,6 +206,15 @@ class Form {
     constant.addModalProductQuantity.value = "";
     constant.addModalProductOverview.value = "";
     constant.addModalProductSpecifications.value = "";
+  };
+
+  static showAlert = (element) => {
+    Util.show(element);
+    element.innerText = "This is invalid";
+  };
+  static hideAlert = (element) => {
+    Util.hide(element);
+    element.innerText = "";
   };
 }
 

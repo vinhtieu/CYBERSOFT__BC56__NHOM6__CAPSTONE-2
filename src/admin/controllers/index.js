@@ -83,9 +83,13 @@ constant.addModalProductImage.addEventListener("input", (e) => {
 
 constant.addModalAddBtn.addEventListener("click", () => {
   const productData = Form.getInputs("addModal");
-  Util.hide(constant.addModalAddBtn);
-  Util.show(constant.addModalLoadingBtn);
-  Server.post(PHONES_API, productData, Table.render);
+  const isValid = Util.validateData(productData, "addModal");
+
+  if (isValid) {
+    Util.hide(constant.addModalAddBtn);
+    Util.show(constant.addModalLoadingBtn);
+    Server.post(PHONES_API, productData, Table.render);
+  }
 });
 
 constant.addModalOpenBtn.addEventListener("click", () => {
@@ -94,16 +98,13 @@ constant.addModalOpenBtn.addEventListener("click", () => {
 
 constant.addBtn.addEventListener("click", (e) => {
   const productData = Form.getInputs();
-  Util.hide(constant.addBtn);
-  Util.show(constant.loadingBtn);
-  Server.post(PHONES_API, productData, (data) => {
-    try {
-      Table.render(data);
-      throw new Error("Table is able to render data");
-    } catch (err) {
-      console.error(`!!!${err}!!!`);
-    }
-  });
+  const isValid = Util.validateData(productData);
+
+  if (isValid) {
+    Util.hide(constant.addBtn);
+    Util.show(constant.loadingBtn);
+    Server.post(PHONES_API, productData, Table.render);
+  }
 });
 
 constant.alertModalCloseBtn.addEventListener("click", () => {
@@ -143,22 +144,25 @@ async function editItem(id) {
 
   constant.updateModalUpdateBtn.addEventListener("click", () => {
     const productData = Form.getInputs("updateModal");
-    Util.hide(constant.updateModalUpdateBtn);
-    Util.show(constant.updateModalLoadingBtn);
-    Server.put(PHONES_API, id, productData, Table.render);
+    const isValid = Util.validateData(productData, "updateModal");
+
+    if (isValid) {
+      Util.hide(constant.updateModalUpdateBtn);
+      Util.show(constant.updateModalLoadingBtn);
+      Server.put(PHONES_API, id, productData, Table.render);
+    }
   });
 }
 
 function deleteItem(id) {
   Util.show(constant.alertModal, "flex");
-  console.log(
-    "🚀 ~ file: index.js:150 ~ deleteItem ~ constant.alertModal:",
-    constant.alertModal
-  );
+
   constant.confirmBtn.addEventListener("click", () => {
-    Table.hideTable();
-    Table.showLoading();
+    Util.hide(constant.alertModal);
+    Util.hide(constant.productTable);
+    Util.show(constant.loadingAnimation, "flex");
     Server.delete(PHONES_API, id, Table.render);
+    Util.show(constant.productTable, "table");
   });
 }
 

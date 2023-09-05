@@ -84,6 +84,32 @@ class Constant {
       this.alertModal = this.$("#alertModal");
       this.confirmBtn = this.$("#confirmBtn");
       this.alertModalCloseBtn = this.$("#alertModalCloseBtn");
+
+      // Alert Inputs
+
+      this.alertSku = this.$("#alertSku");
+      this.alertName = this.$("#alertName");
+      this.alertCondition = this.$("#alertCondition");
+      this.alertPrice = this.$("#alertPrice");
+      this.alertCategory = this.$("#alertCategory");
+      this.alertBrand = this.$("#alertBrand");
+      this.alertQuantity = this.$("#alertQuantity");
+
+      this.addModalAlertSku = this.$("#addModalAlertSku");
+      this.addModalAlertName = this.$("#addModalAlertName");
+      this.addModalAlertCondition = this.$("#addModalAlertCondition");
+      this.addModalAlertPrice = this.$("#addModalAlertPrice");
+      this.addModalAlertCategory = this.$("#addModalAlertCategory");
+      this.addModalAlertBrand = this.$("#addModalAlertBrand");
+      this.addModalAlertQuantity = this.$("#addModalAlertQuantity");
+
+      this.updateModalAlertSku = this.$("#updateModalAlertSku");
+      this.updateModalAlertName = this.$("#updateModalAlertName");
+      this.updateModalAlertCondition = this.$("#updateModalAlertCondition");
+      this.updateModalAlertPrice = this.$("#updateModalAlertPrice");
+      this.updateModalAlertCategory = this.$("#updateModalAlertCategory");
+      this.updateModalAlertBrand = this.$("#updateModalAlertBrand");
+      this.updateModalAlertQuantity = this.$("#updateModalAlertQuantity");
     }
     return Constant.instance;
   }

@@ -603,6 +603,9 @@
                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                   placeholder="SKU001"
                                   required />
+                                <span
+                                  id="addModalAlertSku"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
                               <!-- * Name *-->
                               <div class="mb-4">
@@ -617,6 +620,9 @@
                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                   placeholder="Apple - iPhone 14 Pro 512GB - Deep Purple"
                                   required />
+                                <span
+                                  id="addModalAlertName"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
                               <!-- * Condition *-->
                               <div class="mb-4">
@@ -634,9 +640,12 @@
                                   </option>
                                   <option value="new">New</option>
                                   <option value="used">Used</option>
-                                  <!-- Add more options as needed -->
                                 </select>
+                                <span
+                                  id="addModalAlertCondition"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
+
                               <!-- * Price *-->
                               <div class="mb-4">
                                 <label
@@ -650,7 +659,11 @@
                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                   placeholder="Enter product price"
                                   required />
+                                <span
+                                  id="addModalAlertPrice"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
+
                               <!-- * Sale Price *-->
                               <div class="mb-4">
                                 <label
@@ -681,8 +694,10 @@
                                   <option value="Phones">Phones</option>
                                   <option value="Laptops">Laptops</option>
                                   <option value="PCs">PCs</option>
-                                  <!-- Add more options as needed -->
                                 </select>
+                                <span
+                                  id="addModalAlertCategory"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
                               <!-- * Brand *-->
                               <div class="mb-4">
@@ -702,9 +717,12 @@
                                   <option value="Apple">Apple</option>
                                   <option value="Samsung">Samsung</option>
                                   <option value="Xiaomi">Xiaomi</option>
-                                  <!-- Add more options as needed -->
                                 </select>
+                                <span
+                                  id="addModalAlertBrand"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
+
                               <!-- * Quantity *-->
                               <div class="mb-4">
                                 <label
@@ -718,6 +736,9 @@
                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                   placeholder="Enter product quantity"
                                   required />
+                                <span
+                                  id="addModalAlertQuantity"
+                                  class="hidden text-base font-thin text-red-500"></span>
                               </div>
                               <!-- * Image *  -->
                               <div class="mb-4">
@@ -871,6 +892,9 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="SKU001"
                                 required />
+                              <span
+                                id="updateModalAlertSku"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Name *-->
                             <div class="mb-4">
@@ -885,6 +909,9 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Apple - iPhone 14 Pro 512GB - Deep Purple"
                                 required />
+                              <span
+                                id="updateModalAlertName"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Condition *-->
                             <div class="mb-4">
@@ -902,8 +929,10 @@
                                 </option>
                                 <option value="new">New</option>
                                 <option value="used">Used</option>
-                                <!-- Add more options as needed -->
                               </select>
+                              <span
+                                id="updateModalAlertCondition"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Price *-->
                             <div class="mb-4">
@@ -918,6 +947,9 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Enter product price"
                                 required />
+                              <span
+                                id="updateModalAlertPrice"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Sale Price *-->
                             <div class="mb-4">
@@ -949,8 +981,10 @@
                                 <option value="Phones">Phones</option>
                                 <option value="Laptops">Laptops</option>
                                 <option value="PCs">PCs</option>
-                                <!-- Add more options as needed -->
                               </select>
+                              <span
+                                id="updateModalAlertCategory"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Brand *-->
                             <div class="mb-4">
@@ -971,8 +1005,10 @@
                                 <option value="Samsung">Samsung</option>
                                 <option value="Xiaomi">Xiaomi</option>
                                 <option value="Oppo">Oppo</option>
-                                <!-- Add more options as needed -->
                               </select>
+                              <span
+                                id="updateModalAlertBrand"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Quantity *-->
                             <div class="mb-4">
@@ -987,6 +1023,9 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Enter product quantity"
                                 required />
+                              <span
+                                id="updateModalAlertQuantity"
+                                class="hidden text-base font-thin text-red-500"></span>
                             </div>
                             <!-- * Image *  -->
                             <div class="mb-4">
@@ -1101,9 +1140,9 @@
           <h2 class="my-8 text-2xl font-bold">Add Product</h2>
 
           <!-- * Product Overview *-->
-          <div class="grid grid-cols-3 gap-16 px-8 pt-6 mb-8 xl:grid-cols-2">
+          <div class="grid grid-cols-1 gap-16 px-8 pt-6 mb-8 lg:grid-cols-2">
             <!--  Image -->
-            <div class="flex justify-between col-span-2 gap-16 xl:col-span-1">
+            <div class="flex justify-between col-span-1 gap-16">
               <div class="w-full h-full pe-8">
                 <figure
                   class="flex items-center justify-center w-full h-full rounded-lg">
@@ -1111,8 +1150,6 @@
                     id="imgPreview"
                     class="object-contain object-center max-w-full max-h-full mx-auto align-middle"
                     src=""
-                    srcset="
-                                  "
                     onerror="this.src='https://avatars.mds.yandex.net/i?id=03c47efc307cd97f6a3d6dc5cb1cf9b2debfb70e-7761267-images-thumbs&n=13'" />
                 </figure>
               </div>
@@ -1134,6 +1171,9 @@
                     id="productSKU"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
+                  <span
+                    id="alertSku"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
                 <!-- * Name *-->
                 <div class="mb-4">
@@ -1147,6 +1187,9 @@
                     id="productName"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
+                  <span
+                    id="alertName"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
                 <!-- * Condition *-->
                 <div class="mb-4">
@@ -1164,6 +1207,9 @@
                     <option value="used">Used</option>
                     <!-- Add more options as needed -->
                   </select>
+                  <span
+                    id="alertCondition"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
 
                 <!-- * Price *-->
@@ -1178,6 +1224,9 @@
                     id="productPrice"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
+                  <span
+                    id="alertPrice"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
                 <!-- * Sale Price *-->
                 <div class="mb-4">
@@ -1208,6 +1257,9 @@
                     <option value="PCs">PCs</option>
                     <!-- Add more options as needed -->
                   </select>
+                  <span
+                    id="alertCategory"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
                 <!-- * Brand *-->
                 <div class="mb-4">
@@ -1227,6 +1279,9 @@
                     <option value="Oppo">Oppo</option>
                     <!-- Add more options as needed -->
                   </select>
+                  <span
+                    id="alertBrand"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
                 <!-- * Quantity *-->
                 <div class="mb-4">
@@ -1237,9 +1292,13 @@
                   </label>
                   <input
                     type="number"
+                    step="1"
                     id="productQuantity"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
+                  <span
+                    id="alertQuantity"
+                    class="hidden text-base font-thin text-red-500"></span>
                 </div>
                 <!-- * Image *-->
                 <div class="mb-4">
