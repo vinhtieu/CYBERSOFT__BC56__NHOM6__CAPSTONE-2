@@ -254,7 +254,6 @@ function buyProduct() {
 }
 
 function addProduct(productId) {
-  e.preventDefault();
   const product = getProductByKey(productId);
   constant.cartList.push(product);
   localStorage.setItem("cartList", JSON.stringify(constant.cartList));
