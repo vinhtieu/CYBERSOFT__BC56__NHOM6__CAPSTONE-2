@@ -243,7 +243,7 @@
                   Add product
                 </button>
 
-                <!-- Filter Dropdown -->
+                <!-- * Filter Dropdown * -->
                 <div
                   class="relative flex items-center w-full space-x-3 md:w-auto">
                   <button
@@ -349,6 +349,103 @@
                     </ul>
                   </div>
                 </div>
+
+                <!-- * Sort Dropdown * -->
+                <div
+                  class="relative flex items-center w-full space-x-3 md:w-auto">
+                  <button
+                    id="sortDropdownButton"
+                    data-dropdown-toggle="sortDropdown"
+                    class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    type="button">
+                    <figure class="w-[13px] h-[13px] mr-3">
+                      <img
+                        src="../../../public/img/sort.png"
+                        alt=""
+                        class="object-contain object-center w-full h-full" />
+                    </figure>
+                    Sort
+                    <svg
+                      class="-mr-1 ml-1.5 w-5 h-5"
+                      fill="currentColor"
+                      viewbox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                    </svg>
+                  </button>
+                  <div
+                    id="sortDropdown"
+                    class="absolute z-10 hidden p-4 bg-white rounded-lg shadow w-52 dark:bg-gray-700">
+                    <div class="grid-cols-1 grid-rows-[1fr,50px]">
+                      <div
+                        class="flex flex-col items-start justify-center w-full h-full gap-3">
+                        <div class="flex flex-row items-center gap-3">
+                          <h6
+                            class="text-sm font-medium text-gray-900 dark:text-white">
+                            Sort By
+                          </h6>
+
+                          <select
+                            id="sortOptions"
+                            class="bg-gray-50 border w-24 h-10 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required>
+                            <option value="sku">SKU</option>
+                            <option value="name">Name</option>
+                            <option value="price" selected>Price</option>
+                            <option value="salePrice">SalePrice</option>
+                            <option value="category">Category</option>
+                            <option value="brand">Brand</option>
+                            <option value="quantity">Quantity</option>
+
+                            <!-- Add more options as needed -->
+                          </select>
+                        </div>
+                        <div>
+                          <div class="sortOrder">
+                            <div class="flex items-center mb-3 checkbox">
+                              <input
+                                checked
+                                id="sortAZ"
+                                type="checkbox"
+                                value="asc"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                              <label
+                                for="sortAZ"
+                                class="ml-2 text-sm font-normal text-gray-600 dark:text-gray-300">
+                                Ascending</label
+                              >
+                            </div>
+                            <div class="flex items-center checkbox">
+                              <input
+                                id="sortZA"
+                                type="checkbox"
+                                value="desc"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                              <label
+                                for="sortZA"
+                                class="ml-2 text-sm font-normal text-gray-600 dark:text-gray-300">
+                                Descending</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="mt-4 text-right border-t-[1px] border-gray-200">
+                        <button
+                          id="sortBtn"
+                          type="button"
+                          class="text-white mt-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                          Sort
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- * Table *-->
@@ -357,106 +454,16 @@
                 class="w-full text-base text-left text-gray-500 dark:text-gray-400">
                 <!-- * Header *-->
                 <thead
-                  class="text-base text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr class="px-2">
+                  class="text-base text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr class="px-2 text-left">
                     <th class="px-4 py-3">SKU</th>
                     <th class="px-4 py-3">Image</th>
-                    <th scope="col" class="px-4 py-3">
-                      <button class="flex items-center justify-center gap-2">
-                        Name
-                        <a href="#"
-                          ><svg
-                            class="w-3 h-3 ml-1.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                              d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                          </svg>
-                        </a>
-                      </button>
-                    </th>
-                    <th scope="col" class="px-4 py-3">
-                      <button class="flex items-center justify-center gap-2">
-                        Category
-                        <a href="#"
-                          ><svg
-                            class="w-3 h-3 ml-1.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                              d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                          </svg>
-                        </a>
-                      </button>
-                    </th>
-                    <th scope="col" class="px-4 py-3">
-                      <button class="flex items-center justify-center gap-2">
-                        Brand
-                        <a href="#"
-                          ><svg
-                            class="w-3 h-3 ml-1.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                              d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                          </svg>
-                        </a>
-                      </button>
-                    </th>
-                    <th scope="col" class="px-4 py-3">
-                      <button class="flex items-center justify-center gap-2">
-                        Price
-                        <a href="#"
-                          ><svg
-                            class="w-3 h-3 ml-1.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                              d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                          </svg>
-                        </a>
-                      </button>
-                    </th>
-                    <th scope="col" class="px-4 py-3">
-                      <button class="flex items-center justify-center gap-2">
-                        Sale Price
-                        <a href="#"
-                          ><svg
-                            class="w-3 h-3 ml-1.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                              d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                          </svg>
-                        </a>
-                      </button>
-                    </th>
-                    <th class="px-4 py-3">
-                      <button class="flex items-center justify-center gap-2">
-                        Quantity
-                        <a href="#"
-                          ><svg
-                            class="w-3 h-3 ml-1.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                              d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                          </svg>
-                        </a>
-                      </button>
-                    </th>
+                    <th scope="col" class="px-4 py-3">Name</th>
+                    <th scope="col" class="px-4 py-3">Category</th>
+                    <th scope="col" class="px-4 py-3">Brand</th>
+                    <th scope="col" class="px-4 py-3">Price</th>
+                    <th scope="col" class="px-4 py-3">Sale Price</th>
+                    <th class="px-4 py-3">Quantity</th>
                     <th scope="col" class="px-4 py-3"></th>
                     <th scope="col" class="px-4 py-3"></th>
                   </tr>
@@ -717,6 +724,8 @@
                                   <option value="Apple">Apple</option>
                                   <option value="Samsung">Samsung</option>
                                   <option value="Xiaomi">Xiaomi</option>
+                                  <option value="Oppo">Oppo</option>
+                                  <option value="Realme">Realme</option>
                                 </select>
                                 <span
                                   id="addModalAlertBrand"
@@ -1005,6 +1014,7 @@
                                 <option value="Samsung">Samsung</option>
                                 <option value="Xiaomi">Xiaomi</option>
                                 <option value="Oppo">Oppo</option>
+                                <option value="Realme">Realme</option>
                               </select>
                               <span
                                 id="updateModalAlertBrand"
@@ -1277,6 +1287,7 @@
                     <option value="Samsung">Samsung</option>
                     <option value="Xiaomi">Xiaomi</option>
                     <option value="Oppo">Oppo</option>
+                    <option value="Realme">Realme</option>
                     <!-- Add more options as needed -->
                   </select>
                   <span

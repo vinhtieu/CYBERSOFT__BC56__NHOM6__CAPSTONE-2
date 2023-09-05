@@ -6,8 +6,16 @@ class Constant {
       this.$$ = (selector) => document.querySelectorAll(selector);
 
       this.productList;
+      this.searchList = [];
+      this.sortOrder = "asc";
+
       this.searchBar = this.$("#simple-search");
       this.filterOptions = this.$$("#filterOptions li input");
+      this.sortBtn = this.$("#sortBtn");
+      this.sortOptions = this.$$("#sortOptions");
+      this.sortCheckboxes = this.$$(".sortOrder input");
+      this.sortAZ = this.$("#sortAZ");
+      this.sortZA = this.$("#sortZA");
       this.loadingAnimation = this.$("#loadingAnimation");
 
       //Sidebar

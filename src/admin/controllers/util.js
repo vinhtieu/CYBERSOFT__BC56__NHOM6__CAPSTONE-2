@@ -14,6 +14,14 @@ class Util {
     element.classList.add("hidden");
   };
 
+  static active = (element) => {
+    element.classList.add("active");
+  };
+
+  static inactive = (element) => {
+    element.classList.remove("active");
+  };
+
   static stringToSlug(value) {
     return value.toString().toLowerCase().replace(/ /g, "-");
   }
@@ -132,12 +140,35 @@ class Util {
     return isValid;
   };
 
-  static active = (element) => {
-    element.classList.add("active");
+  static inspectItem = () => {
+    let newList = constant.productList.filter((product) => {
+      let value = product.brand;
+      for (let element of constant.searchList) {
+        value = Util.stringToSlug(value);
+        element = Util.stringToSlug(element);
+        if (value.includes(element)) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    return newList;
   };
 
-  static inactive = (element) => {
-    element.classList.remove("active");
+  static sortItem = (key, order) => {
+    constant.productList.sort((a, b) => {
+      let valueA = a[key].replace(/,/g, "");
+      let valueB = b[key].replace(/,/g, "");
+
+      if (isNaN(valueA) || isNaN(valueB)) {
+        return order === "asc"
+          ? a[key].localeCompare(b[key])
+          : b[key].localeCompare(a[key]);
+      }
+
+      return order === "asc" ? valueA - valueB : valueB - valueA;
+    });
   };
 }
 
