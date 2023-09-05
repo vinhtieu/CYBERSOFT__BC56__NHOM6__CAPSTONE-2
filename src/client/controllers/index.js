@@ -254,6 +254,7 @@ function buyProduct() {
 }
 
 function addProduct(productId) {
+  e.preventDefault();
   const product = getProductByKey(productId);
   constant.cartList.push(product);
   localStorage.setItem("cartList", JSON.stringify(constant.cartList));
@@ -345,6 +346,6 @@ function start() {
 
   fetch(PHONES_API);
   let data = localStorage.getItem("cartList");
-  constant.cartList = JSON.parse(data);
+  constant.cartList = JSON.parse(data) || [];
   checkProductInCart();
 }
