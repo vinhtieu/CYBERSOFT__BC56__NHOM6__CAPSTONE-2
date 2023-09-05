@@ -52,7 +52,7 @@ constant.cartIcon.addEventListener("click", () => {
 
 function handleCheckboxes(e, key, element) {
   const checkedKey = key;
-  const value = toString(e.target.value);
+  const value = Util.stringToSlug(e.target.value);
   const isExisted = element.includes(value);
   if (e.target.checked) {
     if (!isExisted) element.push(value);
@@ -168,8 +168,8 @@ function searchProduct(searchKey) {
           key !== "quantity"
         ) {
           let value = product[key];
-          value = toString(value);
-          searchKey = toString(searchKey);
+          value = Util.stringToSlug(value);
+          searchKey = Util.stringToSlug(searchKey);
           if (value.includes(searchKey)) {
             return true;
           }
@@ -183,39 +183,57 @@ function searchProduct(searchKey) {
   return productData;
 }
 
-function getProductByKey(searchKey) {
+function getProductByKey(searchValue, searchKey) {
   let productData;
-  constant.productList.forEach((product) => {
-    for (const key in product) {
-      if (Object.hasOwnProperty.call(product, key)) {
-        if (
-          key !== "image" &&
-          key !== "desc" &&
-          key !== "specs" &&
-          key !== "sku" &&
-          key !== "price" &&
-          key !== "salePrice" &&
-          key !== "quantity"
-        ) {
-          let value = product[key];
-          value = toString(value);
-          searchKey = toString(searchKey);
-          if (value === searchKey) {
-            productData = product;
-            break;
+  searchValue = Util.stringToSlug(searchValue);
+
+  switch (searchKey) {
+    case "name":
+    case "brand":
+    case "id":
+    case "category":
+      constant.productList.forEach((product) => {
+        for (const key in product) {
+          if (Object.hasOwnProperty.call(product, key)) {
+            if (key === searchValue) {
+              let value = Util.stringToSlug(product[key]);
+              if (value === searchValue) {
+                productData = product;
+                break;
+              }
+            }
           }
         }
-      }
-    }
 
-    return productData;
-  });
+        return productData;
+      });
+      break;
+    default:
+      constant.productList.forEach((product) => {
+        for (const key in product) {
+          if (Object.hasOwnProperty.call(product, key)) {
+            if (
+              key === "name" ||
+              key === "brand" ||
+              key === "id" ||
+              key === "category"
+            ) {
+              let value = Util.stringToSlug(product[key]);
+              if (value === searchValue) {
+                productData = product;
+                break;
+              }
+            }
+          }
+        }
+
+        return productData;
+      });
+
+      break;
+  }
 
   return productData;
-}
-
-function toString(element) {
-  return element.toString().toLowerCase().replace(/ /g, "-");
 }
 
 function checkProductInCart() {
@@ -273,8 +291,8 @@ function filter(checkedItems) {
       if (product.hasOwnProperty(key) && checkedItems.hasOwnProperty(key)) {
         for (let element of checkedItems[key]) {
           let value = product[key];
-          value = toString(value);
-          element = toString(element);
+          value = Util.stringToSlug(value);
+          element = Util.stringToSlug(element);
           if (value === element) {
             fullfilConditions++;
           }

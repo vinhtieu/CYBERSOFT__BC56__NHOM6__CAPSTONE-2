@@ -33,6 +33,10 @@ class Util {
 
     return newList;
   };
+
+  static stringToSlug(element) {
+    return element.toString().toLowerCase().replace(/ /g, "-");
+  }
 }
 
 export default Util;
